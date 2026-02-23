@@ -1,0 +1,82 @@
+dsl picota
+
+Reality Spain
+	Variable eurUsdExchangeRate is Numeric
+	Variable interestRate is Numeric
+
+	Subject Household is Prototype(prefix = "household")
+		Variable avgTemperature is Numeric
+		Variable unemploymentRate is Numeric
+		Variable inflation is Numeric
+		Variable cpi is Numeric
+
+		Variable isProvincialCapital is Boolean
+		Variable municipalitySize is Numeric
+		Variable density is Numeric
+		Variable area is Numeric
+		Variable housingType is Numeric
+		Variable hasHotWater is Boolean
+		Variable hasHeating is Boolean
+		Variable residentialZone is Numeric
+		Variable tenureRegime is Numeric
+
+		Variable referencePersonAge is Numeric
+		Variable referencePersonIsSpanish is Boolean
+		Variable referencePersonHasHigherEducation is Boolean
+
+		Variable additionalDwellingsCount is Numeric
+		Variable netIncome is Numeric
+		Variable savingsRate is Numeric
+		Variable nonMonetarySpending is Numeric
+		Variable totalMeals is Numeric
+
+		Variable mainIncomeSource is Enumerated("pension" "employee" "selfEmployedOrRent")
+
+		Variable monetarySpending is Numeric Composite
+			Components( "foodProducts11" "nonAlcoholicBeverages12" "alcoholicBeverages21" "tobacco22" "clothing31" "footwear32" "actualHousingRent41" "dwellingMaintenance43" "waterSupply44" "electricityGasOtherFuels45" "furnitureAndCoverings51" "householdTextiles52" "majorHouseholdAppliances53" "householdUtensils54" "toolsForHouseAndGarden55" "goodsAndServicesForHousehold56" "pharmaceuticalProducts61" "outpatientMedicalServices62" "hospitalServices63" "vehiclePurchases71" "useOfPersonalVehicles72" "transportServices73" "postalServices81" "telephoneFaxEquipment82" "telephoneFaxServices83" "audiovisualAndTechnology91" "durableLeisureGoods92" "leisureGardeningPets93" "recreationalAndCulturalServices94" "pressAndStationery95" "packageHolidays96" "primaryEducation101" "secondaryPostSecondaryEducation102" "higherEducation103" "nonFormalEducation104" "restaurants111" "accommodation112" "personalCare121" "personalEffects123" "socialProtection124" "insurance125" "financialServices126" "otherServices127" "remittances128")
+
+		Variable members is Numeric Composite
+			Components("elderly" "adults" "children")
+				Components("male" "female")
+			Components("employed" "unemployed")
+			Components("active" "inactive")
+			Components("withIncome" "withoutIncome")
+				Components("male" "female")
+			Components("students" "nonStudents")
+
+DigitalTwin
+	DigitalSubject(Spain.Household)
+		Resolution(scale = Hours)
+		InferenceModel(Spain.Household.monetarySpending)
+
+	Test("Monetary spending should not decrease when net income increases")
+		Given(Spain.Household)
+			Transformation(Spain.Household.netIncome) is Scale(1.05)
+		Then(Spain.Household.monetarySpending, GreaterOrEqual)
+			tolerance = 0.02
+			relative = true
+
+	Test("Basic-needs spending should scale with household size under constant income per capita")
+		Given(Spain.Household)
+			// Coupled transformation: scale members and net income by the same factor
+			Transformation(Spain.Household.members) is Scale(1.10)
+			Transformation(Spain.Household.netIncome) is Scale(1.10)
+		Then(Spain.Household.monetarySpending, Proportional)
+			tolerance = 0.10
+			relative = true
+
+	Test("Nominal spending should not decrease when CPI increases")
+		Given(Spain.Household)
+			Transformation(Spain.Household.cpi) is Scale(1.02)
+		Then(Spain.Household.monetarySpending, GreaterOrEqual)
+			tolerance = 0.02
+			relative = true
+
+	Test("Spending should be invariant to gender distribution changes when totals are preserved")
+		Given(Spain.Household)
+			// Approximation with small symmetric noise on subcomponents (ideally: a Swap/Redistribute transform preserving totals)
+			Transformation(Spain.Household.members, componentName = "withIncome:male") is Noise(0.02)
+			Transformation(Spain.Household.members, componentName = "withIncome:female") is Noise(0.02)
+		Then(Spain.Household.monetarySpending, Equal)
+			tolerance = 0.03
+			relative = true

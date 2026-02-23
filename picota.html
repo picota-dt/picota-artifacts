@@ -1,0 +1,762 @@
+
+    <nav class="toc">
+        <h2>Contents</h2>
+        <ol>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#how-picota-works">How Picota Works</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#dsl-reference">DSL Reference</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#data-integration">Data Integration</a></li>
+            <li><a href="#best-practices">Best Practices</a></li>
+            <li><a href="#appendices">Appendices</a></li>
+        </ol>
+    </nav>
+
+    <main>
+<!--=====================================================================================-->
+<section id="introduction" class="section">
+  <h2 class="section-title">Introduction</h2>
+  <p><strong>Picota</strong> is a platform for building and running <strong>Digital Twins</strong>: virtual representations of real-world systems that evolve over time and respond to changing data.</p>
+
+  <p>Many organizations rely on time-series data from physical systems — sensors, devices, operations — but struggle to integrate that data into live, adaptive models that can simulate behavior, detect anomalies, or predict what happens next. Picota addresses this gap.</p>
+
+  <p>With Picota, you can formally describe the structure of a real-world system, train neural networks to estimate or predict key variables, and deploy a Digital Twin that operates in real time, ingesting data and generating insights automatically.</p>
+
+  <p>What sets Picota apart is its integrated approach: a modeling language, a runtime for training and inference, and a deployment environment that turns your models into operational web services. The result is a scalable, flexible way to simulate complex systems and make them smarter over time.</p>
+
+  <blockquote class="tip">
+    <strong>Tip:</strong> Picota combines structural modeling with machine learning to help you build Digital Twins that are both explainable and data-driven.
+  </blockquote>
+
+  <p>In the next section, you'll see how Picota works — from defining a system, to training models, to deploying a real-time Digital Twin.</p>
+</section>
+
+<!--=====================================================================================-->      
+<section id="how-picota-works" class="section">
+  <h2 class="section-title">How Picota Works</h2>
+  <p>Picota turns your system descriptions into smart, operational Digital Twins. The process follows three simple steps — from model definition to real-time deployment.</p>
+
+  <h3 class="concept-title">1. Define your Descriptive Model</h3>
+  <p>Start by describing your system using the Picota DSL. This high-level model defines what exists, what you observe, and what you want to estimate — without specifying how. It's your system’s blueprint.</p>
+
+  <p>Your model includes:</p>
+  <ul>
+    <li>Reality: the global context (e.g. a city, a forest, a power grid)</li>
+    <li>Subjects: components of the system (e.g. a sensor, a turbine, a lake)</li>
+    <li>Variables: measurable properties (e.g. pressure, pollution level, flow rate)</li>
+  </ul>
+
+  <p>Once defined, you can turn this into a working Digital Twin. Each Subject becomes a Digital Subject, with a chosen time resolution (hourly, daily, etc.), and linked to one or more Inference Models that will learn to predict specific variables.</p>
+
+  <h3 class="concept-title">2. Train Inference Models</h3>
+  <p>Upload historical data that matches your model. Picota uses it to train one inference model per target variable. These models learn how to estimate unknown or future values using current inputs.</p>
+
+  <p>During training, Picota:</p>
+  <ul>
+    <li>Reads structured time-series data (CSV or external sources)</li>
+    <li>Generates and trains one model per inferred variable</li>
+    <li>Stores each model with its inputs, outputs, and quality metrics</li>
+  </ul>
+
+  <p>The result is a set of intelligent Digital Subjects, each ready to simulate or monitor real-world behavior.</p>
+
+  <h3 class="concept-title">3. Deploy your Digital Twin</h3>
+  <p>Once trained, your Digital Subjects are combined into a live Digital Twin. It runs as a service, ready to:</p>
+  <ul>
+    <li>Simulate — replay or test different scenarios offline</li>
+    <li>Operate — run live predictions from real-time inputs</li>
+    <li>Recalibrate — update models as new data comes in</li>
+  </ul>
+
+  <p>Your Digital Twin is modular, versioned, and easy to integrate or scale.</p>
+
+  <h3 class="concept-title">Summary</h3>
+  <ul>
+    <li>Picota DSL defines the system’s structure</li>
+    <li>Picota RT trains predictive models from your data</li>
+    <li>Picota DT runs the live Digital Twin with smart predictions</li>
+  </ul>
+  <blockquote class="tip">
+    <strong>Tip:</strong> Think of the DSL as the <em>“what”</em> (structure), RT as the <em>“how”</em> (learning), and DT as the <em>“where”</em> (deployment).
+  </blockquote>
+</section>
+
+<!--=====================================================================================-->      
+ <section id="getting-started" class="section">
+<h2 class="section-title">Getting Started</h2>
+
+<p>This sections guides you through the creation of your first digital twin using the Picota DSL. You will model a city with a public park and estimate how many people are present in the park based on noise level and calendar features.</p>
+
+<!--------------------------------------->
+<h3>Step 1. Open the Picota Editor</h3>
+<p>Go to <a href="https://quassar.io/picota" target="_blank">quassar.io/picota</a>. This is the official modeling environment for Picota. Click <strong>“New”</strong> to open a blank editor.</p>
+
+<!--------------------------------------->
+<h3>Step 2. Edit the Descriptive Model</h3>
+<p>Paste the following Picota DSL code into the editor:</p>
+
+<pre><code>Reality MyCity
+    Variable Temperature is Numeric
+    Subject CentralPark
+        Variable NoiseLevel is Numeric
+        Variable Occupancy is Numeric Composite
+            Components("North" "South" "West" "East")
+
+DigitalTwin
+    DigitalSubject(subject = MyCity.CentralPark)
+        Resolution(scale = Days)
+        InferenceModel(variable = MyCity.CentralPark.Occupancy)</code></pre>
+
+<p>This model defines the system as follows:</p>
+<ul>
+  <li><em>MyCity</em> serves as the modeling context — the reality being simulated.</li>
+  <li><em>CentralPark</em> is the subject within that reality, with two variables: <em>NoiseLevel</em> and Occupancy.
+  </li>
+  <li>A digital twin is defined to estimate Central Park <em>occupancy</em> on a daily basis based on city temperature and central park temperature and noise level.
+</li></ul>
+
+<!--------------------------------------->
+<h3>Step 3. Check and Commit the Model</h3>
+<p>Click <strong>Check</strong> to validate your model. If everything is correct, click <strong>Commit</strong> to create a versioned release. Only committed models can be used to train and deploy Digital Twins.</p>
+
+<!--------------------------------------->
+<h3>Step 4. Build the Digital Twin</h3>
+<p>Click <strong>Build in Picota</strong> and follow the assistant to complete the setup:</p>
+<ul>
+  <li>Upload your CSV file with the following columns: MyCity.Temperature, Temperature, NoiseLevel, Occupancy:North, Occupancy:South, Occupancy:West, Occupancy:East</li>
+  <li>Start the training phase</li>
+</ul>
+
+<h3>Step 5. Use Your Digital Twin</h3>
+<p>Once training is complete, your Digital Twin is ready to:</p>
+<ul>
+  <li>Estimate occupancy based on new noise level data</li>
+  <li>Run in online mode with daily input updates</li>
+  <li>Retrain as new data becomes available</li>
+</ul>
+
+<!--------------------------------------->
+<h3 class="concept-title">Summary</h3>
+<p>To create your first Digital Twin in Picota:</p>
+<ol>
+  <li>Open the editor at <a href="https://quassar.io/picota" target="_blank">quassar.io/picota</a>.</li>
+  <li>Define a Reality and at least one Subject.</li>
+  <li>Declare measurable Variables in both the Reality and the Subjects.</li>
+  <li>Configure a Digital Twin for each Subject you want to estimate or predict a variable for.</li>
+  <li><strong>Check</strong>, <strong>Commit</strong> the model and then <strong>Build in Picota</strong> to upload training data and run model training.</li>
+  <li>Start simulating or operating your Digital Twin online with updated inputs.</li>
+</ol>
+
+<blockquote class="tip">
+<strong>Tip:</strong> Start simple. You can always extend the model later with additional variables, subjects, or forecasting logic.
+</blockquote>
+</section>
+
+
+<!--=====================================================================================-->
+<section id="dsl-reference" class="section">
+<h2 class="section-title">DSL Reference</h2>
+
+<p>This section provides a comprehensive reference for all constructs in the Picota DSL. It includes syntax, usage, and detailed explanations of core features such as components variables and prototype subjects.</p>
+
+<!--------------------------------------->
+<h3>Overview of Constructs</h3>
+<ul>
+  <li><a href="#variables">Variables</a></li>
+  <li><a href="#subjects">Subjects</a></li>
+  <li><a href="#reality">Reality</a></li>
+  <li><a href="#digitaltwin">DigitalTwin</a></li>
+</ul>
+
+<!--------------------------------------->
+<h3 id="variables" class="concept-title">Variables</h3>
+<p>A Variable defines a data point associated with either a Reality or a Subject. Variables represent measurable, derived, or categorical values. All variables must explicitly declare their type.</p>
+
+
+<!------->
+<h4>Syntax</h4>
+
+<pre class="syntax-block"><code>Variable ::= "Variable" IDENTIFIER "is" Type 
+					{ Components }
+
+Components ::= INDENT "Components" "(" "values" "=" LITERAL { " " LITERAL } ")" { Components }
+
+Type ::= "Numeric" [ "Composite" ]| "Enumerated" "(" LITERAL { " " LITERAL } ")" | "Boolean"
+
+IDENTIFIER ::= ? valid identifier name ?
+LITERAL ::= '"' { character } '"'
+INDENT ::= ? newline and indentation ?
+</code></pre>
+
+<!------->
+<h4>Examples</h4>
+
+<div class="example-block">
+  <p class="example-label">Numeric Variable</p>
+  <p>Represents quantitative values such as temperature, usage, occupancy, or count. It is the most commonly used type.</p>
+  <pre><code>Variable Temperature is Numeric</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Boolean Variable</p>
+  <p>Represents binary states such as true/false, on/off, active/inactive, or present/absent.</p>
+  <pre><code>Variable IsOpen is Boolean</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Enumerated Variable</p>
+  <p>Represents a fixed list of possible string values. Use this type when the variable has a limited set of categories.</p>
+  <pre><code>Variable Status is Enumerated("open" "closed" "maintenance")</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Composiste Variable</p>
+  <p>A composite variable has one or more components. For example, to model consumption by country:</p>
+  <pre><code>Variable Consumption is Numeric Composite
+    Components("Spain" "France" "Portugal" "Germany")</code></pre>
+  <p>Expected inputs: Consumption:Spain, Consumption:France, etc.</p>
+
+</div>
+
+<div class="example-block">
+  <p class="example-label">Nested Components</p>
+  <p>You can nest components to represent hierarchical structures, such as regions and product types:</p>
+  <pre><code>Variable Consumption is Numeric Composite
+  Components("Spain" "France" "Portugal" "Germany")
+    Components("Food" "Energy")</code></pre>
+  <p>Expected inputs: Consumption:Spain:Food, Consumption:Spain:Energy, Consumption:France:Food, etc. </p>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Multiple Independent Components</p>
+  <p>You can also define multiple independent branches of components:</p>
+  <pre><code>Variable Consumption is Numeric Composite
+  Components("Spain" "France" "Portugal" "Germany")
+    Components("Food" "Energy")
+  Components("Residential" "Industrial")</code></pre>
+  <p>Expected inputs:</p>
+  <ul>
+    <li>Consumption:Spain:Food, Consumption:Spain:Energy, Consumption:France:Food, etc.</li>
+    <li>Consumption:Residential, Consumption:Industrial</li>
+  </ul>
+</div>
+
+<div class="example-block">
+  <p class="example-label">NonAgregable Composite Variable</p>
+  <p>Use this snippet when components represent alternative measurements, not aggregable parts of a whole. For example:</p>
+  <pre><code>Variable Temperature is Numeric Composite(isAggregable = false)
+	Components("Min" "Max" "Average")</code></pre>
+  <p>Expected inputs: Temperature:Min, Temperature:Max, Temperature:Average</p>
+</div>
+
+<!---->
+<h4>Rules and Notes</h4>
+
+<ul>
+  <li>Every Variable must declare its type: Numeric, Enumerated, or Boolean. Variable names must be unique within the same Reality or Subject block.</li>
+  <li>Variables can be declared as Composite to represent multiple dimensions or categories (e.g., by country or type).</li>
+  <li>Enumerated values must be declared inline as a list of strings (e.g., ("low" "medium" "high")).</li>
+</ul>
+
+
+<!--------------------------------------->
+<h3 id="subjects" class="concept-title">Subjects</h3>
+
+<p>A <em>Subject</em> defines a measurable entity within a <em>Reality</em>. It represents the unit of structure in the descriptive model — a way to organize variables around the components that make up the system.</p>
+
+<p>There are two types of subjects:</p>
+
+<ul>
+  <li>Regular subjects: define a single named instance. Use these when the entity is unique in the model, such as a specific park, building, or zone.</li>
+  <li>Prototype subjects: define a reusable structure for multiple entities of the same kind. Instances are created automatically from data. Use these when modeling repeated structures like rooms, sensors, or machines.</li>
+</ul>
+
+<p>Each subject can declare one or more variables, which describe the values associated with that entity. These variables are always scoped locally to the subject that defines them.</p>
+
+<h4>Syntax</h4>
+
+<pre class="syntax-block"><code>Subject ::= INDENT "Subject" IDENTIFIER ["is Prototype"]
+                     { Variable }</code></pre>
+
+<!---->
+<h4>Examples</h4>
+
+<div class="example-block">
+  <p class="example-label">Regular Subject</p>
+  <p>This defines a single named subject with its own variables. Regular subjects are used when the entity is unique in the model (e.g., one specific park).</p>
+  <pre><code>Subject CentralPark
+	Variable NoiseLevel is Numeric
+	Variable Occupancy is Numeric
+</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Prototype Subject</p>
+  <p>Prototype subjects let you model multiple instances of the same structure using identifiers provided in external data sources, such as CSV files.</p>
+  <pre><code>Subject TrafficSensor is Prototype
+	Variable VehicleCount is Numeric
+	Variable AverageSpeed is Numeric
+</code></pre>
+
+  <p>Later, during training or simulation, if the input data includes files or rows labeled TrafficSensor001, TrafficSensor002, and so on, the system will automatically instantiate these subject instances at runtime based on the prototype definition.</p>
+</div>
+
+<h4>Rules and Notes</h4>
+
+<ul>
+  <li>Each subject, whether regular or prototype, must have a unique name within the Reality.</li>
+  <li>Prototype subjects allow the model to scale efficiently by avoiding repetition.</li>
+  <li>The identifiers file should contain one unique ID per instance (e.g. sensor_001, sensor_002).</li>
+</ul>
+
+
+Use a regular subject when:
+<ul>
+<li>The entity is unique in the model (e.g., a single park or building)</li>
+<li>You want to configure the digital twin with specific resolution or logic</li>
+<li>You need to combine with prototype-based entities in the same reality</li>
+</ul>
+<blockquote class="tip">
+  <strong>Tip:</strong> Regular subjects are ideal when you want full control over the variables and simulation of a single entity.
+</blockquote>
+
+Use a prototype subject when:
+<ul>
+<li>You have many entities of the same type and structure</li>
+<li>You want to load identifiers from a file (e.g., sensors, rooms, stations)</li>
+<li>You want to apply inference to each instance individually</li>
+</ul>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Use prototype subjects to keep your models scalable and DRY (Don't Repeat Yourself). The system handles instantiation and identity resolution automatically.
+</blockquote>
+
+
+
+<!--------------------------------------->
+<h3 id="reality" class="concept-title">Reality</h3>
+
+<p>Reality is the top-level construct in Picota. It defines the context in which all Subjects exist. While subjects are the entities that we simulate, the reality acts as the environment — providing global variables and shared temporal or structural information.</p>
+
+<p>A Reality contains:</p>
+<ul>
+  <li>Global variables, such as environmental indicators, time-derived features, or macroeconomic factors</li>
+  <li>Subjects, defined directly or via prototypes to instantiate from a dataset</li>
+</ul>
+
+<h4>Examples</h4>
+
+<div class="example-block">
+  <p class="example-label">SmartCity</p>
+  <p>Includes time features and socioeconomic variables.</p>
+  <pre><code>Reality SmartCity
+	Variable CPI is Numeric    // Consumer Price Index
+
+	Subject PublicPark
+		Variable Occupancy is Numeric
+</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">FactoryFloor</p>
+  <p>Includes environmental and scheduling variables.</p>
+  <pre><code>Reality FactoryFloor
+	Variable Temperature is Numeric
+	Variable ElectricityPrice is Numeric
+
+		Subject Machine is Prototype
+			Variable ErrorRate is Numeric
+</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">GreenhouseNetwork</p>
+  <p>Includes seasonal and climate-related variables.</p>
+  <pre><code>Reality GreenhouseNetwork
+	Variable Rainfall is Numeric
+	Variable Humidity is Numeric
+
+	Subject Greenhouse is Prototype
+		Variable Yield is Numeric
+		Variable Temperature is Numeric Composite
+			Components("Max" "Min")
+</code></pre>
+</div>
+
+<h4>Rules and Notes</h4>
+
+<p>The reality block is intended to define global variables and contextual features that apply across all subjects. These variables are not simulated on their own — they serve as shared inputs for estimation and prediction within subjects.</p>
+
+<p>Use the reality to declare:</p>
+<ul>
+  <li>Time-related variables like day of week, season, or holiday flags</li>
+  <li>Environmental measurements such as temperature, rainfall, or humidity</li>
+  <li>Macroeconomic indicators such as inflation index, fuel price, or policy flags</li>
+</ul>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Use a mix of global variables to represent the structure of your system — time features for periodicity, numeric variables for measurements, and custom indicators for policy, cost, or external drivers.
+</blockquote>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Declare time features and environmental data at the reality level so that all subjects can reference them without duplication.
+</blockquote>
+
+
+
+<!--------------------------------------->
+<h3 id="digitaltwin" class="concept-title">DigitalTwin</h3>
+
+<p>A <em>DigitalTwin</em> is also defined using the Picota DSL, just like the <em>Reality</em>. While the Reality defines the structural elements of the system, the Digital Twin specifies how those elements should behave over time, which variables should be inferred, and at what resolution.</p>
+
+<p>This configuration serves as the bridge between definition and execution: it is used by the runtime engine to train the appropriate inference models and to package them into a deployable unit. In this sense, the Digital Twin definition captures the intent for simulation or prediction, turning the static structure into a dynamic, operational system.</p>
+
+<p>Each DigitalTwin contains one or more <em>DigitalSubjects</em>. A DigitalSubject references a subject declared in the Reality, specifies how frequently it updates (through a <em>Resolution</em>), and declares one or more <em>InferenceModels</em>, each responsible for estimating or predicting a variable.</p>
+
+<h4>Syntax</h4>
+
+<pre class="syntax-block"><code>DigitalTwin ::= "DigitalTwin"
+                 { INDENT DigitalSubject }
+
+DigitalSubject ::= "DigitalSubject" ["is" "TimeInvariant"]
+                  INDENT "subject" = IDENTIFIER
+                  INDENT Resolution
+                  { INDENT InferenceModel }
+
+Resolution ::= "Resolution"
+              [INDENT "amount" = NUMBER]
+              INDENT "scale" = TIMEUNIT
+
+InferenceModel ::= "InferenceModel"
+                   INDENT "variable" = IDENTIFIER 
+                   [ INDENT "timeHorizon" = NUMBER ]
+
+</code></pre>
+
+<h4>Examples</h4>
+
+<div class="example-block">
+  <p class="example-label">Basic Estimation</p>
+  <p>This twin estimates hourly water usage for a public park.</p>
+  <pre><code>DigitalTwin
+	DigitalSubject
+		subject = SmartCity.PublicPark
+
+		Resolution(scale = Hours)
+
+		InferenceModel(SmartCity.PublicPark.WaterUsage)</code></pre>
+</div>
+
+
+<div class="example-block">
+  <p class="example-label">Time-Invariant Digital Subject</p>
+  <p>This twin estimates a static numeric property of a park — its elevation above sea level — which does not vary over time.</p>
+  <pre><code>DigitalTwin
+  DigitalSubject is TimeInvariant
+    subject = SmartCity.PublicPark
+    InferenceModel(SmartCity.PublicPark.Elevation)</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Prediction with Time Horizon</p>
+  <p>This twin predicts occupancy three days in advance using a prediction model.</p>
+  <pre><code>DigitalTwin
+	DigitalSubject(subject = MyHotel.MainBuilding)
+		Resolution(scale = Days)
+		InferenceModel
+			variable = MyHotel.MainBuilding.Occupancy
+			timeHorizon = 3
+</code></pre>
+</div>
+
+<div class="example-block">
+  <p class="example-label">Digital Twin for Prototyped Subjects</p>
+  <p>This twin uses a prototype subject. For each sensor listed in <code>sensors.csv</code>, a separate inference model will be trained and executed.</p>
+
+  <pre><code>Subject TrafficSensor is Prototype
+	Variable VehicleCount is Numeric
+	Variable AverageSpeed is Numeric
+</code></pre>
+
+  <pre><code>DigitalTwin
+	DigitalSubject
+		subject = SmartCity.TrafficSensor
+
+		Resolution
+			value = 1
+			scale = Days
+
+		InferenceModel
+			variable = SmartCity.TrafficSensor.AverageSpeed
+</code></pre>
+</div>
+
+<h4>Rules and Notes</h4>
+
+<ul>
+  <li>A Digital Twin contains one or more DigitalSubject blocks.</li>
+  <li>Each Digital Subject must reference a subject using reality.subject notation.</li>
+  <li>The Resolution specifies the update frequency for that subject’s inference process.</li>
+  <li>Each InferenceModel must target a single variable declared in the subject.</li>
+  <li>Estimation is used to infer present values when they are not directly observed.</li>
+  <li>Prediction forecasts future values over a time horizon.</li>
+  <li>Multiple inference models can be declared per digital subject — one per variable.</li>
+</ul>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Use multiple digital subjects if you want to coordinate several parts of your system under a shared simulation or inference timeline.
+</blockquote>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Use separate digital twins when the same subject must be simulated at different resolutions or with different inference goals.
+</blockquote>
+</section>
+
+<!--=====================================================================================-->
+<section id="use-cases" class="section">
+  <h2 class="section-title">Use Cases</h2>
+
+  <p>Before writing a model in Picota, it's essential to understand how to translate a real-world system into the formal components of the DSL. This section presents a methodological approach to formulating a use case, followed by concrete examples from different domains.</p>
+
+  <h3>From Problem to Model</h3>
+  <p>To build a Digital Twin in Picota, we start by analyzing the problem domain and identifying its core structural and dynamic elements. The goal is to map those elements onto the key concepts of the Picota DSL: <em>Reality</em>, <em>Subject</em>, <em>Variable</em>, <em>DigitalSubject</em>, and <em>InferenceModel</em>.</p>
+
+  <p>A good starting point is to ask the following questions:</p>
+  <ol>
+    <li><strong>What system or environment do I want to represent?</strong><br>This will become the <em>Reality</em>, the top-level context of your model.</li>
+
+    <li><strong>What are the main entities involved in the system?</strong><br>These are your <em>Subjects</em>. They can be unique (regular subject) or repeatable structures (prototype subject), depending on whether the entity appears once or many times.</li>
+
+    <li><strong>What measurable or inferable properties are relevant?</strong><br>These are your <em>Variables</em>. Some will come from real sensors or logs; others will be inferred by the system based on historical data.</li>
+
+    <li><strong>How often does the system change or need to be evaluated?</strong><br>This defines the <em>Resolution</em> for each <em>DigitalSubject</em>.</li>
+
+    <li><strong>What do I need to estimate or predict?</strong><br>This determines your <em>InferenceModels</em>: each one targets a specific variable and defines how it will be learned and executed.</li>
+  </ol>
+
+  <p>Once you have these answers, you can start building your Picota model: first by writing the <em>Reality</em> and <em>Subjects</em> with their variables, then defining a <em>DigitalTwin</em> that binds them to inference logic and simulation settings.</p>
+
+  <p>This process can be iterative. You may begin with a minimal model — a single subject and one variable — and expand over time as more data becomes available or the system evolves.</p>
+
+  <blockquote class="tip">
+    <strong>Tip:</strong> Don’t model everything at once. Focus on one question you want the system to answer — for example, “What will the occupancy be tomorrow?” — and model only the elements needed to support that prediction.
+  </blockquote>
+
+  <h3>Examples</h3>
+
+  <h4>Urban Infrastructure Monitoring</h4>
+  <p><strong>Goal:</strong> Forecast park occupancy to optimize lighting and security.</p>
+  <p>The <em>Reality</em> is the city. Each park is a <em>Prototype Subject</em> with variables like <code>occupancy</code> and <code>noiseLevel</code>. A daily <em>DigitalTwin</em> uses historical data and time features (like <code>dayOfWeek</code>) to estimate future occupancy.</p>
+
+  <h4>Building Operations</h4>
+  <p><strong>Goal:</strong> Estimate daily energy and water consumption in a housing complex.</p>
+  <p>The model defines a <em>Prototype Subject</em> for apartments. Each instance has variables like <code>waterUsage</code> and <code>electricityUse</code>. The <em>DigitalTwin</em> runs daily predictions for each unit using past usage and occupancy patterns.</p>
+
+  <h4>Environmental Monitoring</h4>
+  <p><strong>Goal:</strong> Predict water flow in a river system based on rainfall and season.</p>
+  <p>Each measurement station is a <em>Subject</em> with variables like <code>flowRate</code> and <code>precipitation</code>. The <em>DigitalTwin</em> uses hourly resolution and includes inference models for <code>flowRate</code> to support flood prediction.</p>
+
+  <h4>Manufacturing Equipment</h4>
+  <p><strong>Goal:</strong> Detect anomalies and predict downtime in a fleet of machines.</p>
+  <p>A <em>Prototype Subject</em> represents each machine. Variables include <code>vibration</code> and <code>temperature</code>. The <em>DigitalTwin</em> processes telemetry data and estimates future failures using learned behavior patterns.</p>
+
+  <h4>Smart Mobility</h4>
+  <p><strong>Goal:</strong> Predict traffic conditions and travel times based on sensor data.</p>
+  <p>Sensors are modeled as prototype subjects with variables like <code>vehicleCount</code> and <code>averageSpeed</code>. The <em>DigitalTwin</em> runs every 15 minutes and includes predictions for congestion trends.</p>
+
+  <h3>Summary</h3>
+  <p>Modeling a use case in Picota is not just a technical task — it’s a design process. The key is to identify what matters most in your system, translate it into structural elements, and let inference logic fill the gaps. By separating what exists, what is observed, and what needs to be estimated, Picota helps you build digital twins that are robust, scalable, and grounded in real data.</p>
+</section>
+
+<!--=====================================================================================-->
+<section id="data-integration" class="section">
+  <h2 class="section-title">Data Integration</h2>
+
+  <p>Once the model is defined using the Picota DSL, the next step is to provide historical data for training. Picota uses tabular files in TSV (tab-separated values) format to supply time-series data for each subject in the model.</p>
+
+  <h3>One File Per Subject Instance</h3>
+
+  <p>Each subject instance must have its own data file. For regular subjects, the filename should match the name of the subject exactly. For example, if your subject is named PublicPark, the corresponding file must be called PublicPark.tsv.</p>
+
+<p>For prototype subjects, which represent many instances derived from a common structure, Picota does not require an explicit list of identifiers. Instead, it expects to find one TSV file per instance in the data directory, with filenames that begin with the name of the prototype subject.</p>
+
+<p>For example, if your prototype subject is named TrafficSensor, and your data directory contains the following files:</p>
+
+<ul>
+  <li>TrafficSensor001.tsv</li>
+  <li>TrafficSensor002.tsv</li>
+  <li>TrafficSensor003.tsv</li>
+</ul>
+
+<p>Then Picota will automatically create three subject instances: TrafficSensor001, TrafficSensor002, and TrafficSensor003. Each of these will inherit the structure defined by the prototype, including its variables and resolution.</p>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> The filename (without extension) defines the instance identifier. Make sure all instance files follow the format: <em>PrototypeName + Suffix</em>, such as TrafficSensor001 or Sensor-A12.
+</blockquote>
+  <p>Each file contains the tabular data for one instance of the subject.</p>
+
+  <h3>Required Columns</h3>
+
+<h4>Instant</h4>
+
+<p>Data files must include a column named Instant to indicate the timestamp of each row — but only if the associated Digital Subject is not <em>TimeInvariant</em>. The Instant column is required for all time-dependent models and must follow the ISO 8601 standard format, such as:</p>
+
+<ul>
+  <li>2024-04-15T12:00:00Z</li>
+  <li>2025-01-01T00:00:00+01:00</li>
+</ul>
+  <pre><code>Instant
+2023-01-01T00:00:00Z
+2023-01-02T00:00:00Z
+2023-01-03T00:00:00Z</code></pre>
+
+  <p>This timestamp is used to align data in time and is required even when only one variable is being measured. If your model includes time features — such as day of the week, quarter of the year, or whether the date is a holiday — Picota will automatically derive those from the instant column. You do not need to provide them explicitly.</p>
+
+  <blockquote class="tip">
+    <strong>Tip:</strong> Time-based features are automatically included in the inference model from the <strong>instant</strong> column — when it is present. This column is required for time-dependent subjects, and ignored for <em>TimeInvariant</em> ones. Make sure the timestamps are consistent and use UTC where possible.
+</blockquote>
+
+<h4>Variable Columns</h4>
+
+  <p>Besides instant, each file must include one column for each variable defined in the subject. The column name must match the variable name exactly. For example, if a subject declares two variables — noiseLevel and occupancy — the file must contain:</p>
+
+  <pre><code>Instant	NoiseLevel	Occupancy
+2023-01-01T00:00:00Z	53.1	120
+2023-01-02T00:00:00Z	49.7	98</code></pre>
+
+  <h4>Composite Variables</h4>
+
+  <p>If a variable is defined as composiste, each component must be recorded as a separate column. The column name must follow the pattern VariableName:Component. For example, for a composite variable Temperature with components Max and Min, the file would look like:</p>
+
+  <pre><code>Instant	Temperature:Max	Temperature:Min
+2023-01-01T00:00:00Z	15.3	14.8
+2023-01-02T00:00:00Z	15.1	14.9</code></pre>
+
+  <p>Picota uses this format to associate the right values with each component when training or running the model.</p>
+
+<h4>Handling Missing Values</h4>
+
+<p>All variable values must be present for each timestamp. Picota does not support missing values in the training data. If a value is missing or unknown, the corresponding row should be excluded from the file.</p>
+
+<p>This ensures that the training process is consistent and avoids introducing uncertainty into the model. If your data source includes incomplete rows, you must clean or filter the data beforehand to remove them.</p>
+
+<blockquote class="tip">
+  <strong>Tip:</strong> Always validate your data files to ensure that every row contains a valid value for each variable and a correctly formatted timestamp in the instant column.
+</blockquote>
+
+  <h4>Rules and Notes</h4>
+
+  <ul>
+    <li>Use one CSV/TSV file per subject instance.</li>
+    <li>Each file must contain an instant column with ISO 8601 timestamps.</li>
+    <li>Each variable must have its own column, named exactly as in the model.</li>
+    <li>For composite variables, use column names in the form Variable:Component.</li>
+    <li>For prototype subjects, Picota expects to find one file per instance. Subject instances are inferred automatically from all files whose names start with the prototype subject’s name (e.g., TrafficSensor001.tsv, TrafficSensor002.tsv, etc.).</li>
+    <li>Time features are automatically extracted from instant if defined in the model.</li>
+  </ul>
+
+  <blockquote class="tip">
+    <strong>Tip:</strong> Keep all timestamps aligned to a consistent time zone, preferably UTC, and make sure they match the declared resolution in the model (e.g., daily, hourly).
+  </blockquote>
+</section>
+
+
+<!--=====================================================================================-->
+<section id="best-practices" class="section">
+  <h2 class="section-title">Best Practices</h2>
+
+  <p>Building a robust and maintainable model in Picota involves more than just writing valid DSL code. This section summarizes practical recommendations for modeling, data preparation, and deployment to help ensure clarity, consistency, and reliable performance.</p>
+
+  <h4>1. Model One Concept at a Time</h4>
+  <p>Start with a minimal model that answers a single question — for example, "Can I estimate daily occupancy in one park?" Once this works, expand gradually by adding more subjects, variables, or inference models.</p>
+
+  <h4>2. Use Prototype Subjects for Repeated Structures</h4>
+  <p>When modeling repeated entities like sensors, apartments, or machines, define a <em>prototype subject</em> and let the data files drive the instantiation. This keeps the DSL concise and reduces maintenance overhead.</p>
+
+  <h4>3. Keep Variable Names Consistent</h4>
+  <p>Variable names in the DSL must match exactly with the column names in the data files. Use lowercase with no spaces or accents, and avoid renaming variables after models have been trained.</p>
+
+  <h4>4. Use Composite Variables Only When Needed</h4>
+  <p>Composite variables are powerful, but only use them when the same quantity is reported at different temporal resolutions. If you only have one timescale, use a standard numeric variable.</p>
+
+  <h4>5. Clean Your Data Before Training</h4>
+  <p>Ensure there are no missing values, malformed timestamps, or inconsistent units. Use external tools to validate and pre-process the data before importing it into Picota.</p>
+
+  <h4>6. Align Resolutions Across Models</h4>
+  <p>If you plan to compare or combine predictions from different digital subjects, use compatible time resolutions (e.g., all daily or all hourly). Mixing resolutions can lead to alignment errors and poor model coordination.</p>
+
+  <h4>7. Document Your Model Choices</h4>
+  <p>Use comments in the DSL files to explain your design decisions — what each variable means, why a subject is structured a certain way, or which assumptions the inference models rely on.</p>
+
+  <h4>8. Test in Small Batches</h4>
+  <p>When working with large datasets or many subjects, begin by testing the model with a few representative instances. This helps detect structural or formatting issues early without waiting for full-scale training.</p>
+
+  <h4>9. Version Your Models and Data</h4>
+  <p>Maintain version control for both your DSL files and your input datasets. This ensures reproducibility, makes debugging easier, and allows you to roll back if a model configuration fails.</p>
+
+  <h4>10. Monitor and Retrain Periodically</h4>
+  <p>Models can drift over time as the real system evolves. Retrain your inference models regularly with new data to maintain accuracy and reliability, especially in systems affected by seasonality or user behavior.</p>
+
+  <blockquote class="tip">
+    <strong>Tip:</strong> Think of Picota as a living model: it reflects your understanding of a system and evolves with it. Start simple, build iteratively, and always let your data guide the complexity.
+  </blockquote>
+</section>
+
+<!--=====================================================================================-->
+<section id="appendices" class="section">
+  <h2>Appendices</h2>
+
+  <article>
+    <h3>Glossary of Terms</h3>
+    <dl>
+      <dt>Reality</dt>
+      <dd>The top-level container of a model. It defines the global context and holds the collection of subjects and shared variables.</dd>
+
+      <dt>Subject</dt>
+      <dd>A measurable entity within the reality. Subjects hold variables and represent components of the system such as sensors, buildings, or devices.</dd>
+
+      <dt>Prototype Subject</dt>
+      <dd>A reusable subject template. Picota creates multiple subject instances based on input files whose names begin with the prototype's name.</dd>
+
+      <dt>Variable</dt>
+      <dd>A property of a subject that can be measured, computed, or inferred. Variables can be numeric, enumerated, or boolean.</dd>
+
+      <dt>Composite Variable</dt>
+      <dd>A variable that has values at different dimensions. Each component is treated as a separate signal.</dd>
+
+      <dt>Digital Twin</dt>
+      <dd>An executable configuration that binds subjects to inference logic and resolution settings. Used to simulate and estimate system behavior.</dd>
+
+      <dt>Digital Subject</dt>
+      <dd>An operational instance of a subject within a digital twin. It specifies the resolution and associated inference models.</dd>
+
+      <dt>Resolution</dt>
+      <dd>The time frequency at which a digital subject updates (e.g., every 1 day, every 15 minutes).</dd>
+
+      <dt>Inference Model</dt>
+      <dd>A learned model associated with a variable. It estimates current values (estimation) or forecasts future ones (prediction).</dd>
+
+      <dt>Estimation</dt>
+      <dd>An inference mode that fills in missing or unknown values at the current timestamp.</dd>
+
+      <dt>Prediction</dt>
+      <dd>An inference mode that forecasts variable values a fixed time horizon into the future.</dd>
+
+      <dt>instant</dt>
+      <dd>A required column in every data file representing the timestamp for each observation, in ISO 8601 format.</dd>
+    </dl>
+  </article>
+  <article>
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://picota.io/documents">Documentation</a></li>
+        <li><a href="https://picota.io/support">Support &amp; Community</a></li>
+      </ul>    
+  </article>  
+</section>
+
+    </main>
+    <footer>
+        <p>© 2025 Picota Digital Twins. All rights reserved.</p>
+    </footer>
