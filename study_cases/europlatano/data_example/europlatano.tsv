@@ -1,0 +1,4 @@
+instant	Category	Production	Area	Territory.Temperature:Average	Territory.Temperature:Min	Territory.Temperature:Max	Territory.Precipitation	Territory.Humidity	Territory.WindSpeed:Average	Territory.WindDirection	Territory.WindSpeed:Max	Altitude	Island
+2014-12-27T00:00:00.000Z	P	96	48919.0000	14.8	9.5	20.0	0.0	58.0	1.4	17	4.7	58	TEN
+2014-12-27T00:00:00.000Z	S	80	48919.0000	14.8	9.5	20.0	0.0	58.0	1.4	17	4.7	58	TEN
+2014-12-27T00:00:00.000Z	G	4926	48919.0000	14.8	9.5	20.0	0.0	58.0	1.4	17	4.7	58	TEN

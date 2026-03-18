@@ -1,0 +1,218 @@
+/Users/oroncal/workspace/projects/picota/.venv/bin/python /Users/oroncal/workspace/projects/picota/runtime.test/test/europlatano/europlatano.py
+config: tsv=/Users/oroncal/workspace/projects/picota/runtime.test/data/europlatano.tsv horizon_days=28 trainer_mode=all epochs=50 batch_size=64 lr=0.0005 seed=42 shap_enabled=True shap_background_size=256 shap_eval_size=256 device=mps
+data: parsed_rows=778066 aggregated_rows=777395 horizon_rows=182492 train=116794 val=29198 test=36500
+features: time=['month_sin', 'month_cos', 'day_sin', 'day_cos', 'week_sin', 'week_cos', 'quarter_sin', 'quarter_cos'] numerical=['Area', 'Territory.Temperature:Average', 'Territory.Temperature:Min', 'Territory.Temperature:Max', 'Territory.Precipitation', 'Territory.Humidity', 'Territory.WindSpeed:Average', 'Territory.WindDirection', 'Territory.WindSpeed:Max', 'Altitude'] categorical=['Category', 'Island'] onehot_dim=18 target=Production+28d
+target_minmax: min=1.000000 max=36541.000000
+rule_weight_map={'production_proportional_to_area': 1.0, 'production_non_decreasing_with_rainfall': 1.0, 'production_robust_to_humidity_noise': 1.0}
+rule_config: supervised_weight=1.0 relation_constraint_weight=0.25 worst_case_over_T_weight=0.0 violation_atol=1e-06 violation_rtol=0.0001 tabnet_steps=4 tabnet_n_d=24 tabnet_n_a=24 tabnet_gamma=1.3 tabnet_dropout=0.05
+catalog: specs=3 relation_tests=3 over_T_transforms=0 by_category={'invariance': 1, 'directional_ordinal': 1, 'target_mapped': 1}
+EuroplatanoAlternative[KAN]	epoch=1/50	train_loss=0.008318	val_mae=0.019660	val_rmse=0.038537	val_r2=0.283526
+EuroplatanoAlternative[KAN]	epoch=2/50	train_loss=0.001389	val_mae=0.015210	val_rmse=0.034446	val_r2=0.427575
+EuroplatanoAlternative[KAN]	epoch=3/50	train_loss=0.001154	val_mae=0.014850	val_rmse=0.033046	val_r2=0.473175
+EuroplatanoAlternative[KAN]	epoch=4/50	train_loss=0.001111	val_mae=0.014168	val_rmse=0.032608	val_r2=0.487037
+EuroplatanoAlternative[KAN]	epoch=5/50	train_loss=0.001093	val_mae=0.014449	val_rmse=0.032646	val_r2=0.485852
+EuroplatanoAlternative[KAN]	epoch=6/50	train_loss=0.001079	val_mae=0.013785	val_rmse=0.032176	val_r2=0.500524
+EuroplatanoAlternative[KAN]	epoch=7/50	train_loss=0.001075	val_mae=0.014025	val_rmse=0.032076	val_r2=0.503623
+EuroplatanoAlternative[KAN]	epoch=8/50	train_loss=0.001067	val_mae=0.014721	val_rmse=0.032209	val_r2=0.499499
+EuroplatanoAlternative[KAN]	epoch=9/50	train_loss=0.001059	val_mae=0.013973	val_rmse=0.031921	val_r2=0.508419
+EuroplatanoAlternative[KAN]	epoch=10/50	train_loss=0.001054	val_mae=0.014757	val_rmse=0.032177	val_r2=0.500523
+EuroplatanoAlternative[KAN]	epoch=11/50	train_loss=0.001051	val_mae=0.014705	val_rmse=0.032213	val_r2=0.499404
+EuroplatanoAlternative[KAN]	epoch=12/50	train_loss=0.001045	val_mae=0.013849	val_rmse=0.031814	val_r2=0.511727
+EuroplatanoAlternative[KAN]	epoch=13/50	train_loss=0.001042	val_mae=0.014136	val_rmse=0.032149	val_r2=0.501385
+EuroplatanoAlternative[KAN]	epoch=14/50	train_loss=0.001040	val_mae=0.013712	val_rmse=0.031736	val_r2=0.514111
+EuroplatanoAlternative[KAN]	epoch=15/50	train_loss=0.001036	val_mae=0.014151	val_rmse=0.031656	val_r2=0.516542
+EuroplatanoAlternative[KAN]	epoch=16/50	train_loss=0.001030	val_mae=0.013349	val_rmse=0.031890	val_r2=0.509366
+EuroplatanoAlternative[KAN]	epoch=17/50	train_loss=0.001026	val_mae=0.013264	val_rmse=0.032008	val_r2=0.505750
+EuroplatanoAlternative[KAN]	epoch=18/50	train_loss=0.001023	val_mae=0.014170	val_rmse=0.032019	val_r2=0.505386
+EuroplatanoAlternative[KAN]	epoch=19/50	train_loss=0.001022	val_mae=0.013773	val_rmse=0.031632	val_r2=0.517288
+EuroplatanoAlternative[KAN]	epoch=20/50	train_loss=0.001019	val_mae=0.014251	val_rmse=0.031732	val_r2=0.514242
+EuroplatanoAlternative[KAN]	epoch=21/50	train_loss=0.001015	val_mae=0.013715	val_rmse=0.031644	val_r2=0.516910
+EuroplatanoAlternative[KAN]	epoch=22/50	train_loss=0.001012	val_mae=0.014288	val_rmse=0.031735	val_r2=0.514151
+EuroplatanoAlternative[KAN]	epoch=23/50	train_loss=0.001009	val_mae=0.013940	val_rmse=0.031606	val_r2=0.518075
+EuroplatanoAlternative[KAN]	epoch=24/50	train_loss=0.001003	val_mae=0.013900	val_rmse=0.031679	val_r2=0.515839
+EuroplatanoAlternative[KAN]	epoch=25/50	train_loss=0.001005	val_mae=0.013774	val_rmse=0.031629	val_r2=0.517380
+EuroplatanoAlternative[KAN]	epoch=26/50	train_loss=0.001000	val_mae=0.013925	val_rmse=0.031924	val_r2=0.508328
+EuroplatanoAlternative[KAN]	epoch=27/50	train_loss=0.000998	val_mae=0.013741	val_rmse=0.031847	val_r2=0.510707
+EuroplatanoAlternative[KAN]	epoch=28/50	train_loss=0.000994	val_mae=0.014257	val_rmse=0.031665	val_r2=0.516291
+EuroplatanoAlternative[KAN]	epoch=29/50	train_loss=0.000993	val_mae=0.013874	val_rmse=0.031621	val_r2=0.517631
+EuroplatanoAlternative[KAN]	epoch=30/50	train_loss=0.000990	val_mae=0.014346	val_rmse=0.031955	val_r2=0.507375
+EuroplatanoAlternative[KAN]	epoch=31/50	train_loss=0.000988	val_mae=0.013628	val_rmse=0.031601	val_r2=0.518241
+EuroplatanoAlternative[KAN]	epoch=32/50	train_loss=0.000984	val_mae=0.013653	val_rmse=0.031543	val_r2=0.519989
+EuroplatanoAlternative[KAN]	epoch=33/50	train_loss=0.000983	val_mae=0.013540	val_rmse=0.031683	val_r2=0.515732
+EuroplatanoAlternative[KAN]	epoch=34/50	train_loss=0.000979	val_mae=0.014144	val_rmse=0.031852	val_r2=0.510553
+EuroplatanoAlternative[KAN]	epoch=35/50	train_loss=0.000976	val_mae=0.013628	val_rmse=0.031955	val_r2=0.507386
+EuroplatanoAlternative[KAN]	epoch=36/50	train_loss=0.000977	val_mae=0.013660	val_rmse=0.031587	val_r2=0.518642
+EuroplatanoAlternative[KAN]	epoch=37/50	train_loss=0.000972	val_mae=0.013905	val_rmse=0.031692	val_r2=0.515461
+EuroplatanoAlternative[KAN]	epoch=38/50	train_loss=0.000971	val_mae=0.013811	val_rmse=0.031686	val_r2=0.515622
+EuroplatanoAlternative[KAN]	epoch=39/50	train_loss=0.000968	val_mae=0.014567	val_rmse=0.032076	val_r2=0.503632
+EuroplatanoAlternative[KAN]	epoch=40/50	train_loss=0.000966	val_mae=0.013786	val_rmse=0.031705	val_r2=0.515067
+EuroplatanoAlternative[KAN]	epoch=41/50	train_loss=0.000964	val_mae=0.014040	val_rmse=0.031743	val_r2=0.513896
+EuroplatanoAlternative[KAN]	epoch=42/50	train_loss=0.000964	val_mae=0.013834	val_rmse=0.031690	val_r2=0.515508
+EuroplatanoAlternative[KAN]	epoch=43/50	train_loss=0.000961	val_mae=0.013790	val_rmse=0.031926	val_r2=0.508258
+EuroplatanoAlternative[KAN]	epoch=44/50	train_loss=0.000958	val_mae=0.013347	val_rmse=0.031765	val_r2=0.513216
+EuroplatanoAlternative[KAN]	epoch=45/50	train_loss=0.000953	val_mae=0.013824	val_rmse=0.031889	val_r2=0.509416
+EuroplatanoAlternative[KAN]	epoch=46/50	train_loss=0.000953	val_mae=0.013956	val_rmse=0.031975	val_r2=0.506749
+EuroplatanoAlternative[KAN]	epoch=47/50	train_loss=0.000952	val_mae=0.013859	val_rmse=0.031902	val_r2=0.509008
+EuroplatanoAlternative[KAN]	epoch=48/50	train_loss=0.000951	val_mae=0.014501	val_rmse=0.032486	val_r2=0.490855
+EuroplatanoAlternative[KAN]	epoch=49/50	train_loss=0.000947	val_mae=0.014464	val_rmse=0.031981	val_r2=0.506562
+EuroplatanoAlternative[KAN]	epoch=50/50	train_loss=0.000944	val_mae=0.014049	val_rmse=0.031706	val_r2=0.515026
+EuroplatanoAlternative[KAN]	best_val_n=29198	best_val_mae=0.013264	best_val_rmse=0.032008	best_val_r2=0.505750	best_val_mae_raw=484.659633	best_val_rmse_raw=1169.561284	best_val_max_abs_err_raw=29803.039062	best_val_p95_abs_err_raw=2026.339844	best_val_p99_abs_err_raw=5108.683105	best_val_tail5_mean_abs_err_raw=4022.670654
+KAN best_val: n=29198 mae_model=0.013264 rmse_model=0.032008 r2=0.505750 mae_raw=484.659633 rmse_raw=1169.561284 max_abs_err_raw=29803.039062 p95_abs_err_raw=2026.339844 p99_abs_err_raw=5108.683105 tail5_mean_abs_err_raw=4022.670654
+KAN test: n=36500 mae_model=0.013483 rmse_model=0.032649 r2=0.504164 mae_raw=492.655037 rmse_raw=1192.983951 max_abs_err_raw=30510.638672 p95_abs_err_raw=2095.587646 p99_abs_err_raw=5119.268066 tail5_mean_abs_err_raw=4134.162598
+rule_violations[KAN:val]: overall_rate=0.067984 overall_pct=6.80% cases=87594 violations=5955
+rule_violations[KAN:val] rule=production_non_decreasing_with_rainfall rate=0.147305 pct=14.73% violations=4301/29198
+rule_violations[KAN:val] rule=production_proportional_to_area rate=0.056648 pct=5.66% violations=1654/29198
+rule_violations[KAN:val] rule=production_robust_to_humidity_noise rate=0.000000 pct=0.00% violations=0/29198
+rule_violations[KAN:test]: overall_rate=0.066959 overall_pct=6.70% cases=109500 violations=7332
+rule_violations[KAN:test] rule=production_non_decreasing_with_rainfall rate=0.147452 pct=14.75% violations=5382/36500
+rule_violations[KAN:test] rule=production_proportional_to_area rate=0.053425 pct=5.34% violations=1950/36500
+rule_violations[KAN:test] rule=production_robust_to_humidity_noise rate=0.000000 pct=0.00% violations=0/36500
+model_saved[KAN]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/Europlatano/Production_h28_from_tsv_kan.bin
+elapsed[KAN]=5207.89s
+EuroplatanoAlternative[KAN-Mm]	epoch=1/50	mode=composite_metamorphic	train_total=0.017760	train_supervised=0.008202	train_relation_constraint_penalty=0.009558	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.016587	val_rmse=0.035466	val_r2=0.393180
+EuroplatanoAlternative[KAN-Mm]	epoch=2/50	mode=composite_metamorphic	train_total=0.003526	train_supervised=0.001260	train_relation_constraint_penalty=0.002266	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014774	val_rmse=0.034779	val_r2=0.416470
+EuroplatanoAlternative[KAN-Mm]	epoch=3/50	mode=composite_metamorphic	train_total=0.002899	train_supervised=0.001231	train_relation_constraint_penalty=0.001668	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014762	val_rmse=0.034236	val_r2=0.434546
+EuroplatanoAlternative[KAN-Mm]	epoch=4/50	mode=composite_metamorphic	train_total=0.002531	train_supervised=0.001219	train_relation_constraint_penalty=0.001312	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014896	val_rmse=0.034205	val_r2=0.435569
+EuroplatanoAlternative[KAN-Mm]	epoch=5/50	mode=composite_metamorphic	train_total=0.002322	train_supervised=0.001217	train_relation_constraint_penalty=0.001104	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014551	val_rmse=0.033871	val_r2=0.446539
+EuroplatanoAlternative[KAN-Mm]	epoch=6/50	mode=composite_metamorphic	train_total=0.002218	train_supervised=0.001203	train_relation_constraint_penalty=0.001015	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014205	val_rmse=0.033669	val_r2=0.453121
+EuroplatanoAlternative[KAN-Mm]	epoch=7/50	mode=composite_metamorphic	train_total=0.002156	train_supervised=0.001200	train_relation_constraint_penalty=0.000956	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014256	val_rmse=0.033696	val_r2=0.452247
+EuroplatanoAlternative[KAN-Mm]	epoch=8/50	mode=composite_metamorphic	train_total=0.002108	train_supervised=0.001192	train_relation_constraint_penalty=0.000916	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014846	val_rmse=0.033900	val_r2=0.445588
+EuroplatanoAlternative[KAN-Mm]	epoch=9/50	mode=composite_metamorphic	train_total=0.002067	train_supervised=0.001183	train_relation_constraint_penalty=0.000884	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014265	val_rmse=0.033645	val_r2=0.453906
+EuroplatanoAlternative[KAN-Mm]	epoch=10/50	mode=composite_metamorphic	train_total=0.002036	train_supervised=0.001181	train_relation_constraint_penalty=0.000855	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014957	val_rmse=0.033755	val_r2=0.450329
+EuroplatanoAlternative[KAN-Mm]	epoch=11/50	mode=composite_metamorphic	train_total=0.002003	train_supervised=0.001175	train_relation_constraint_penalty=0.000827	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014922	val_rmse=0.034078	val_r2=0.439728
+EuroplatanoAlternative[KAN-Mm]	epoch=12/50	mode=composite_metamorphic	train_total=0.001974	train_supervised=0.001171	train_relation_constraint_penalty=0.000803	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014286	val_rmse=0.033422	val_r2=0.461107
+EuroplatanoAlternative[KAN-Mm]	epoch=13/50	mode=composite_metamorphic	train_total=0.001947	train_supervised=0.001170	train_relation_constraint_penalty=0.000777	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014456	val_rmse=0.033823	val_r2=0.448104
+EuroplatanoAlternative[KAN-Mm]	epoch=14/50	mode=composite_metamorphic	train_total=0.001937	train_supervised=0.001170	train_relation_constraint_penalty=0.000767	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014192	val_rmse=0.033190	val_r2=0.468547
+EuroplatanoAlternative[KAN-Mm]	epoch=15/50	mode=composite_metamorphic	train_total=0.001908	train_supervised=0.001163	train_relation_constraint_penalty=0.000745	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014518	val_rmse=0.033287	val_r2=0.465442
+EuroplatanoAlternative[KAN-Mm]	epoch=16/50	mode=composite_metamorphic	train_total=0.001888	train_supervised=0.001159	train_relation_constraint_penalty=0.000729	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013999	val_rmse=0.033431	val_r2=0.460821
+EuroplatanoAlternative[KAN-Mm]	epoch=17/50	mode=composite_metamorphic	train_total=0.001873	train_supervised=0.001155	train_relation_constraint_penalty=0.000718	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013978	val_rmse=0.034113	val_r2=0.438582
+EuroplatanoAlternative[KAN-Mm]	epoch=18/50	mode=composite_metamorphic	train_total=0.001860	train_supervised=0.001156	train_relation_constraint_penalty=0.000705	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014587	val_rmse=0.033437	val_r2=0.460613
+EuroplatanoAlternative[KAN-Mm]	epoch=19/50	mode=composite_metamorphic	train_total=0.001853	train_supervised=0.001154	train_relation_constraint_penalty=0.000699	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013974	val_rmse=0.033239	val_r2=0.466996
+EuroplatanoAlternative[KAN-Mm]	epoch=20/50	mode=composite_metamorphic	train_total=0.001841	train_supervised=0.001150	train_relation_constraint_penalty=0.000690	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014277	val_rmse=0.033170	val_r2=0.469212
+EuroplatanoAlternative[KAN-Mm]	epoch=21/50	mode=composite_metamorphic	train_total=0.001831	train_supervised=0.001147	train_relation_constraint_penalty=0.000684	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014178	val_rmse=0.033255	val_r2=0.466465
+EuroplatanoAlternative[KAN-Mm]	epoch=22/50	mode=composite_metamorphic	train_total=0.001817	train_supervised=0.001146	train_relation_constraint_penalty=0.000671	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.015129	val_rmse=0.034142	val_r2=0.437650
+EuroplatanoAlternative[KAN-Mm]	epoch=23/50	mode=composite_metamorphic	train_total=0.001811	train_supervised=0.001145	train_relation_constraint_penalty=0.000666	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014204	val_rmse=0.033072	val_r2=0.472339
+EuroplatanoAlternative[KAN-Mm]	epoch=24/50	mode=composite_metamorphic	train_total=0.001802	train_supervised=0.001139	train_relation_constraint_penalty=0.000663	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014123	val_rmse=0.033249	val_r2=0.466680
+EuroplatanoAlternative[KAN-Mm]	epoch=25/50	mode=composite_metamorphic	train_total=0.001794	train_supervised=0.001142	train_relation_constraint_penalty=0.000653	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014173	val_rmse=0.033243	val_r2=0.466874
+EuroplatanoAlternative[KAN-Mm]	epoch=26/50	mode=composite_metamorphic	train_total=0.001783	train_supervised=0.001140	train_relation_constraint_penalty=0.000643	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014252	val_rmse=0.033206	val_r2=0.468063
+EuroplatanoAlternative[KAN-Mm]	epoch=27/50	mode=composite_metamorphic	train_total=0.001774	train_supervised=0.001140	train_relation_constraint_penalty=0.000634	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014000	val_rmse=0.033267	val_r2=0.466109
+EuroplatanoAlternative[KAN-Mm]	epoch=28/50	mode=composite_metamorphic	train_total=0.001762	train_supervised=0.001136	train_relation_constraint_penalty=0.000627	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014147	val_rmse=0.033058	val_r2=0.472795
+EuroplatanoAlternative[KAN-Mm]	epoch=29/50	mode=composite_metamorphic	train_total=0.001756	train_supervised=0.001135	train_relation_constraint_penalty=0.000621	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013954	val_rmse=0.033116	val_r2=0.470924
+EuroplatanoAlternative[KAN-Mm]	epoch=30/50	mode=composite_metamorphic	train_total=0.001745	train_supervised=0.001133	train_relation_constraint_penalty=0.000612	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014512	val_rmse=0.033409	val_r2=0.461512
+EuroplatanoAlternative[KAN-Mm]	epoch=31/50	mode=composite_metamorphic	train_total=0.001737	train_supervised=0.001131	train_relation_constraint_penalty=0.000606	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013938	val_rmse=0.033393	val_r2=0.462032
+EuroplatanoAlternative[KAN-Mm]	epoch=32/50	mode=composite_metamorphic	train_total=0.001725	train_supervised=0.001131	train_relation_constraint_penalty=0.000594	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014022	val_rmse=0.033178	val_r2=0.468955
+EuroplatanoAlternative[KAN-Mm]	epoch=33/50	mode=composite_metamorphic	train_total=0.001718	train_supervised=0.001130	train_relation_constraint_penalty=0.000588	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013872	val_rmse=0.033363	val_r2=0.463012
+EuroplatanoAlternative[KAN-Mm]	epoch=34/50	mode=composite_metamorphic	train_total=0.001707	train_supervised=0.001129	train_relation_constraint_penalty=0.000578	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014398	val_rmse=0.033307	val_r2=0.464820
+EuroplatanoAlternative[KAN-Mm]	epoch=35/50	mode=composite_metamorphic	train_total=0.001698	train_supervised=0.001122	train_relation_constraint_penalty=0.000576	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014038	val_rmse=0.033028	val_r2=0.473729
+EuroplatanoAlternative[KAN-Mm]	epoch=36/50	mode=composite_metamorphic	train_total=0.001699	train_supervised=0.001126	train_relation_constraint_penalty=0.000573	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013950	val_rmse=0.033167	val_r2=0.469289
+EuroplatanoAlternative[KAN-Mm]	epoch=37/50	mode=composite_metamorphic	train_total=0.001688	train_supervised=0.001121	train_relation_constraint_penalty=0.000566	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014597	val_rmse=0.033341	val_r2=0.463706
+EuroplatanoAlternative[KAN-Mm]	epoch=38/50	mode=composite_metamorphic	train_total=0.001681	train_supervised=0.001120	train_relation_constraint_penalty=0.000561	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014350	val_rmse=0.033064	val_r2=0.472593
+EuroplatanoAlternative[KAN-Mm]	epoch=39/50	mode=composite_metamorphic	train_total=0.001676	train_supervised=0.001117	train_relation_constraint_penalty=0.000559	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014661	val_rmse=0.033245	val_r2=0.466812
+EuroplatanoAlternative[KAN-Mm]	epoch=40/50	mode=composite_metamorphic	train_total=0.001672	train_supervised=0.001117	train_relation_constraint_penalty=0.000555	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014158	val_rmse=0.032950	val_r2=0.476208
+EuroplatanoAlternative[KAN-Mm]	epoch=41/50	mode=composite_metamorphic	train_total=0.001660	train_supervised=0.001113	train_relation_constraint_penalty=0.000547	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014164	val_rmse=0.032957	val_r2=0.475986
+EuroplatanoAlternative[KAN-Mm]	epoch=42/50	mode=composite_metamorphic	train_total=0.001656	train_supervised=0.001112	train_relation_constraint_penalty=0.000544	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014289	val_rmse=0.033008	val_r2=0.474367
+EuroplatanoAlternative[KAN-Mm]	epoch=43/50	mode=composite_metamorphic	train_total=0.001651	train_supervised=0.001112	train_relation_constraint_penalty=0.000539	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013857	val_rmse=0.032981	val_r2=0.475239
+EuroplatanoAlternative[KAN-Mm]	epoch=44/50	mode=composite_metamorphic	train_total=0.001643	train_supervised=0.001107	train_relation_constraint_penalty=0.000536	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013854	val_rmse=0.033128	val_r2=0.470544
+EuroplatanoAlternative[KAN-Mm]	epoch=45/50	mode=composite_metamorphic	train_total=0.001631	train_supervised=0.001101	train_relation_constraint_penalty=0.000530	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013882	val_rmse=0.033184	val_r2=0.468763
+EuroplatanoAlternative[KAN-Mm]	epoch=46/50	mode=composite_metamorphic	train_total=0.001631	train_supervised=0.001104	train_relation_constraint_penalty=0.000527	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014680	val_rmse=0.033346	val_r2=0.463549
+EuroplatanoAlternative[KAN-Mm]	epoch=47/50	mode=composite_metamorphic	train_total=0.001621	train_supervised=0.001099	train_relation_constraint_penalty=0.000522	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.013915	val_rmse=0.033056	val_r2=0.472840
+EuroplatanoAlternative[KAN-Mm]	epoch=48/50	mode=composite_metamorphic	train_total=0.001616	train_supervised=0.001101	train_relation_constraint_penalty=0.000515	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014802	val_rmse=0.033682	val_r2=0.452679
+EuroplatanoAlternative[KAN-Mm]	epoch=49/50	mode=composite_metamorphic	train_total=0.001607	train_supervised=0.001097	train_relation_constraint_penalty=0.000510	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014071	val_rmse=0.032862	val_r2=0.479021
+EuroplatanoAlternative[KAN-Mm]	epoch=50/50	mode=composite_metamorphic	train_total=0.001601	train_supervised=0.001094	train_relation_constraint_penalty=0.000507	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.014507	val_rmse=0.032973	val_r2=0.475484
+EuroplatanoAlternative[KAN-Mm]	best_val_n=29198	best_val_mae=0.013854	best_val_rmse=0.033128	best_val_r2=0.470544	best_val_mae_raw=506.235429	best_val_rmse_raw=1210.499735	best_val_max_abs_err_raw=29243.087891	best_val_p95_abs_err_raw=2121.382568	best_val_p99_abs_err_raw=5409.416992	best_val_tail5_mean_abs_err_raw=4193.959473
+KAN-Mm best_val: n=29198 mae_model=0.013854 rmse_model=0.033128 r2=0.470544 mae_raw=506.235429 rmse_raw=1210.499735 max_abs_err_raw=29243.087891 p95_abs_err_raw=2121.382568 p99_abs_err_raw=5409.416992 tail5_mean_abs_err_raw=4193.959473
+KAN-Mm test: n=36500 mae_model=0.014085 rmse_model=0.034000 r2=0.462263 mae_raw=514.683406 rmse_raw=1242.369868 max_abs_err_raw=27066.671875 p95_abs_err_raw=2168.279541 p99_abs_err_raw=5530.389160 tail5_mean_abs_err_raw=4348.029785
+rule_violations[KAN-Mm:val]: overall_rate=0.002055 overall_pct=0.21% cases=87594 violations=180
+rule_violations[KAN-Mm:val] rule=production_non_decreasing_with_rainfall rate=0.006165 pct=0.62% violations=180/29198
+rule_violations[KAN-Mm:val] rule=production_proportional_to_area rate=0.000000 pct=0.00% violations=0/29198
+rule_violations[KAN-Mm:val] rule=production_robust_to_humidity_noise rate=0.000000 pct=0.00% violations=0/29198
+rule_violations[KAN-Mm:test]: overall_rate=0.001982 overall_pct=0.20% cases=109500 violations=217
+rule_violations[KAN-Mm:test] rule=production_non_decreasing_with_rainfall rate=0.005918 pct=0.59% violations=216/36500
+rule_violations[KAN-Mm:test] rule=production_proportional_to_area rate=0.000027 pct=0.00% violations=1/36500
+rule_violations[KAN-Mm:test] rule=production_robust_to_humidity_noise rate=0.000000 pct=0.00% violations=0/36500
+model_saved[KAN-Mm]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/Europlatano/Production_h28_from_tsv_kan_mm.bin
+elapsed[KAN-Mm]=8184.77s
+EuroplatanoAlternative[tabnet]	epoch=1/50	train_loss=0.002824	val_mae=0.017835	val_rmse=0.036118	val_r2=0.370653
+EuroplatanoAlternative[tabnet]	epoch=2/50	train_loss=0.001221	val_mae=0.014253	val_rmse=0.032401	val_r2=0.493520
+EuroplatanoAlternative[tabnet]	epoch=3/50	train_loss=0.001135	val_mae=0.014076	val_rmse=0.031939	val_r2=0.507878
+EuroplatanoAlternative[tabnet]	epoch=4/50	train_loss=0.001122	val_mae=0.014897	val_rmse=0.032181	val_r2=0.500375
+EuroplatanoAlternative[tabnet]	epoch=5/50	train_loss=0.001096	val_mae=0.013686	val_rmse=0.031544	val_r2=0.519957
+EuroplatanoAlternative[tabnet]	epoch=6/50	train_loss=0.001087	val_mae=0.013741	val_rmse=0.031478	val_r2=0.521972
+EuroplatanoAlternative[tabnet]	epoch=7/50	train_loss=0.001077	val_mae=0.013571	val_rmse=0.031400	val_r2=0.524346
+EuroplatanoAlternative[tabnet]	epoch=8/50	train_loss=0.001067	val_mae=0.014035	val_rmse=0.031335	val_r2=0.526310
+EuroplatanoAlternative[tabnet]	epoch=9/50	train_loss=0.001061	val_mae=0.013933	val_rmse=0.031514	val_r2=0.520867
+EuroplatanoAlternative[tabnet]	epoch=10/50	train_loss=0.001047	val_mae=0.013749	val_rmse=0.031927	val_r2=0.508229
+EuroplatanoAlternative[tabnet]	epoch=11/50	train_loss=0.001053	val_mae=0.013567	val_rmse=0.031486	val_r2=0.521716
+EuroplatanoAlternative[tabnet]	epoch=12/50	train_loss=0.001040	val_mae=0.014606	val_rmse=0.031870	val_r2=0.509998
+EuroplatanoAlternative[tabnet]	epoch=13/50	train_loss=0.001035	val_mae=0.013995	val_rmse=0.031163	val_r2=0.531497
+EuroplatanoAlternative[tabnet]	epoch=14/50	train_loss=0.001035	val_mae=0.013509	val_rmse=0.031072	val_r2=0.534211
+EuroplatanoAlternative[tabnet]	epoch=15/50	train_loss=0.001020	val_mae=0.014197	val_rmse=0.031293	val_r2=0.527564
+EuroplatanoAlternative[tabnet]	epoch=16/50	train_loss=0.001017	val_mae=0.015552	val_rmse=0.032207	val_r2=0.499562
+EuroplatanoAlternative[tabnet]	epoch=17/50	train_loss=0.001011	val_mae=0.013326	val_rmse=0.031164	val_r2=0.531471
+EuroplatanoAlternative[tabnet]	epoch=18/50	train_loss=0.001019	val_mae=0.013951	val_rmse=0.031057	val_r2=0.534677
+EuroplatanoAlternative[tabnet]	epoch=19/50	train_loss=0.001012	val_mae=0.013664	val_rmse=0.031129	val_r2=0.532524
+EuroplatanoAlternative[tabnet]	epoch=20/50	train_loss=0.001001	val_mae=0.013711	val_rmse=0.030952	val_r2=0.537805
+EuroplatanoAlternative[tabnet]	epoch=21/50	train_loss=0.001000	val_mae=0.013340	val_rmse=0.031090	val_r2=0.533687
+EuroplatanoAlternative[tabnet]	epoch=22/50	train_loss=0.000995	val_mae=0.013651	val_rmse=0.031453	val_r2=0.522733
+EuroplatanoAlternative[tabnet]	epoch=23/50	train_loss=0.000994	val_mae=0.013937	val_rmse=0.031119	val_r2=0.532804
+EuroplatanoAlternative[tabnet]	epoch=24/50	train_loss=0.000996	val_mae=0.013576	val_rmse=0.031334	val_r2=0.526323
+EuroplatanoAlternative[tabnet]	epoch=25/50	train_loss=0.000996	val_mae=0.013602	val_rmse=0.031028	val_r2=0.535535
+EuroplatanoAlternative[tabnet]	epoch=26/50	train_loss=0.000983	val_mae=0.013871	val_rmse=0.030983	val_r2=0.536881
+EuroplatanoAlternative[tabnet]	epoch=27/50	train_loss=0.000983	val_mae=0.013569	val_rmse=0.030796	val_r2=0.542452
+EuroplatanoAlternative[tabnet]	epoch=28/50	train_loss=0.000987	val_mae=0.013716	val_rmse=0.031145	val_r2=0.532046
+EuroplatanoAlternative[tabnet]	epoch=29/50	train_loss=0.000982	val_mae=0.014237	val_rmse=0.031119	val_r2=0.532807
+EuroplatanoAlternative[tabnet]	epoch=30/50	train_loss=0.000980	val_mae=0.013549	val_rmse=0.030923	val_r2=0.538690
+EuroplatanoAlternative[tabnet]	epoch=31/50	train_loss=0.000972	val_mae=0.013618	val_rmse=0.031120	val_r2=0.532777
+EuroplatanoAlternative[tabnet]	epoch=32/50	train_loss=0.000979	val_mae=0.013390	val_rmse=0.030747	val_r2=0.543923
+EuroplatanoAlternative[tabnet]	epoch=33/50	train_loss=0.000970	val_mae=0.014381	val_rmse=0.031824	val_r2=0.511405
+EuroplatanoAlternative[tabnet]	epoch=34/50	train_loss=0.000969	val_mae=0.014417	val_rmse=0.031017	val_r2=0.535869
+EuroplatanoAlternative[tabnet]	epoch=35/50	train_loss=0.000962	val_mae=0.014238	val_rmse=0.031030	val_r2=0.535475
+EuroplatanoAlternative[tabnet]	epoch=36/50	train_loss=0.000966	val_mae=0.013367	val_rmse=0.030572	val_r2=0.549098
+EuroplatanoAlternative[tabnet]	epoch=37/50	train_loss=0.000956	val_mae=0.013404	val_rmse=0.030726	val_r2=0.544538
+EuroplatanoAlternative[tabnet]	epoch=38/50	train_loss=0.000955	val_mae=0.013543	val_rmse=0.030802	val_r2=0.542289
+EuroplatanoAlternative[tabnet]	epoch=39/50	train_loss=0.000959	val_mae=0.013523	val_rmse=0.030935	val_r2=0.538333
+EuroplatanoAlternative[tabnet]	epoch=40/50	train_loss=0.000958	val_mae=0.013577	val_rmse=0.030697	val_r2=0.545387
+EuroplatanoAlternative[tabnet]	epoch=41/50	train_loss=0.000954	val_mae=0.014101	val_rmse=0.031037	val_r2=0.535271
+EuroplatanoAlternative[tabnet]	epoch=42/50	train_loss=0.000953	val_mae=0.013688	val_rmse=0.030750	val_r2=0.543834
+EuroplatanoAlternative[tabnet]	epoch=43/50	train_loss=0.000941	val_mae=0.013706	val_rmse=0.031071	val_r2=0.534252
+EuroplatanoAlternative[tabnet]	epoch=44/50	train_loss=0.000942	val_mae=0.013769	val_rmse=0.031009	val_r2=0.536104
+EuroplatanoAlternative[tabnet]	epoch=45/50	train_loss=0.000943	val_mae=0.014335	val_rmse=0.031473	val_r2=0.522127
+EuroplatanoAlternative[tabnet]	epoch=46/50	train_loss=0.000943	val_mae=0.013261	val_rmse=0.030751	val_r2=0.543790
+EuroplatanoAlternative[tabnet]	epoch=47/50	train_loss=0.000934	val_mae=0.013637	val_rmse=0.031081	val_r2=0.533946
+EuroplatanoAlternative[tabnet]	epoch=48/50	train_loss=0.000939	val_mae=0.014202	val_rmse=0.031326	val_r2=0.526568
+EuroplatanoAlternative[tabnet]	epoch=49/50	train_loss=0.000933	val_mae=0.014066	val_rmse=0.031092	val_r2=0.533631
+EuroplatanoAlternative[tabnet]	epoch=50/50	train_loss=0.000928	val_mae=0.013338	val_rmse=0.030870	val_r2=0.540258
+EuroplatanoAlternative[tabnet]	best_val_n=29198	best_val_mae=0.013261	best_val_rmse=0.030751	best_val_r2=0.543790	best_val_mae_raw=484.571086	best_val_rmse_raw=1123.652402	best_val_max_abs_err_raw=26217.582031	best_val_p95_abs_err_raw=2030.196899	best_val_p99_abs_err_raw=4850.319824	best_val_tail5_mean_abs_err_raw=3874.874756
+tabnet best_val: n=29198 mae_model=0.013261 rmse_model=0.030751 r2=0.543790 mae_raw=484.571086 rmse_raw=1123.652402 max_abs_err_raw=26217.582031 p95_abs_err_raw=2030.196899 p99_abs_err_raw=4850.319824 tail5_mean_abs_err_raw=3874.874756
+tabnet test: n=36500 mae_model=0.013375 rmse_model=0.031322 r2=0.543631 mae_raw=488.730671 rmse_raw=1144.521078 max_abs_err_raw=28718.910156 p95_abs_err_raw=2069.114990 p99_abs_err_raw=4951.297363 tail5_mean_abs_err_raw=3960.152832
+rule_violations[tabnet:val]: overall_rate=0.088351 overall_pct=8.84% cases=87594 violations=7739
+rule_violations[tabnet:val] rule=production_non_decreasing_with_rainfall rate=0.115864 pct=11.59% violations=3383/29198
+rule_violations[tabnet:val] rule=production_proportional_to_area rate=0.124632 pct=12.46% violations=3639/29198
+rule_violations[tabnet:val] rule=production_robust_to_humidity_noise rate=0.024556 pct=2.46% violations=717/29198
+rule_violations[tabnet:test]: overall_rate=0.087479 overall_pct=8.75% cases=109500 violations=9579
+rule_violations[tabnet:test] rule=production_non_decreasing_with_rainfall rate=0.113096 pct=11.31% violations=4128/36500
+rule_violations[tabnet:test] rule=production_proportional_to_area rate=0.126548 pct=12.65% violations=4619/36500
+rule_violations[tabnet:test] rule=production_robust_to_humidity_noise rate=0.022795 pct=2.28% violations=832/36500
+model_saved[tabnet]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/Europlatano/Production_h28_from_tsv_tabnet.bin
+elapsed[tabnet]=4713.05s
+shap_model=KAN
+shap_saved=/Users/oroncal/workspace/projects/picota/temp/analysis/europlatano/Production_h28_shap_importance.csv
+shap_top_features:
+rank=1 feature=Area mean_abs_shap_model=0.01456119 mean_abs_shap_raw=532.06592098 share_percent=25.9473
+rank=2 feature=Category=G mean_abs_shap_model=0.01065589 mean_abs_shap_raw=389.36636830 share_percent=18.9883
+rank=3 feature=Category=S mean_abs_shap_model=0.00529075 mean_abs_shap_raw=193.32396750 share_percent=9.4278
+rank=4 feature=Category=P mean_abs_shap_model=0.00356634 mean_abs_shap_raw=130.31396317 share_percent=6.3550
+rank=5 feature=week_cos mean_abs_shap_model=0.00276285 mean_abs_shap_raw=100.95459808 share_percent=4.9233
+rank=6 feature=Category=B mean_abs_shap_model=0.00256719 mean_abs_shap_raw=93.80515199 share_percent=4.5746
+rank=7 feature=Category=E mean_abs_shap_model=0.00246177 mean_abs_shap_raw=89.95303732 share_percent=4.3867
+rank=8 feature=Island=TEN mean_abs_shap_model=0.00235667 mean_abs_shap_raw=86.11259137 share_percent=4.1995
+rank=9 feature=Altitude mean_abs_shap_model=0.00195691 mean_abs_shap_raw=71.50544808 share_percent=3.4871
+rank=10 feature=Category=V mean_abs_shap_model=0.00143526 mean_abs_shap_raw=52.44440259 share_percent=2.5576
+rank=11 feature=month_cos mean_abs_shap_model=0.00130889 mean_abs_shap_raw=47.82688534 share_percent=2.3324
+rank=12 feature=Island=PAL mean_abs_shap_model=0.00123256 mean_abs_shap_raw=45.03776898 share_percent=2.1964
+rank=13 feature=week_sin mean_abs_shap_model=0.00098499 mean_abs_shap_raw=35.99143318 share_percent=1.7552
+rank=14 feature=month_sin mean_abs_shap_model=0.00074941 mean_abs_shap_raw=27.38355641 share_percent=1.3354
+rank=15 feature=day_cos mean_abs_shap_model=0.00052679 mean_abs_shap_raw=19.24890932 share_percent=0.9387
+elapsed_summary: KAN=4905.16s KAN-Mm=8030.63s tabnet=4775.16s
+
+Process finished with exit code 0

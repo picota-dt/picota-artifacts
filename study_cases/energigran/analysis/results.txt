@@ -1,0 +1,285 @@
+/Users/oroncal/workspace/projects/picota/.venv/bin/python /Users/oroncal/workspace/projects/picota/runtime.test/test/energigran/energigran.py
+config: input=/Users/oroncal/workspace/projects/picota/runtime.test/data/energigran.tsv horizon_hours=24 trainer_mode=all epochs=50 batch_size=32 lr=0.0005 seed=42 shap_enabled=True shap_background_size=256 shap_eval_size=256 device=mps
+data: hourly_rows=6222 horizon_examples=6054 train=3874 val=968 test=1212
+features: time=['month_sin', 'month_cos', 'day_sin', 'day_cos', 'hour_sin', 'hour_cos', 'quarter_sin', 'quarter_cos'] numerical_inputs=['cellTemperature', 'Infecar.temperature', 'Infecar.radiation', 'grid', 'consumption'] excluded=['generation'] target=generation+24h
+target_scaler: out_min=0.090000 out_max=10141.290000
+rule_weight_map={'radiation_up_implies_active_power_non_decreasing': 1.0, 'cell_temperature_up_tends_to_reduce_efficiency': 0.3, 'consumption_constant_with_grid_import_decreasing_generation_increases': 1.0}
+rule_config: supervised_weight=1.0 relation_constraint_weight=0.25 worst_case_over_T_weight=0.0 tabnet_steps=4 tabnet_n_d=24 tabnet_n_a=24 tabnet_gamma=1.3 tabnet_dropout=0.05
+catalog: specs=3 relation_tests=3 over_T_transforms=0 by_category={'invariance': 0, 'directional_ordinal': 3, 'target_mapped': 0}
+Energigran[KAN]	epoch=1/50	train_loss=0.100038	val_mae=0.199552	val_rmse=0.223064	val_r2=0.095960
+Energigran[KAN]	epoch=2/50	train_loss=0.035076	val_mae=0.131890	val_rmse=0.160280	val_r2=0.533245
+Energigran[KAN]	epoch=3/50	train_loss=0.017915	val_mae=0.088429	val_rmse=0.115804	val_r2=0.756343
+Energigran[KAN]	epoch=4/50	train_loss=0.012980	val_mae=0.073495	val_rmse=0.105767	val_r2=0.796750
+Energigran[KAN]	epoch=5/50	train_loss=0.011319	val_mae=0.067193	val_rmse=0.101307	val_r2=0.813530
+Energigran[KAN]	epoch=6/50	train_loss=0.010352	val_mae=0.062979	val_rmse=0.098916	val_r2=0.822227
+Energigran[KAN]	epoch=7/50	train_loss=0.009709	val_mae=0.061052	val_rmse=0.097970	val_r2=0.825613
+Energigran[KAN]	epoch=8/50	train_loss=0.009299	val_mae=0.059288	val_rmse=0.096977	val_r2=0.829130
+Energigran[KAN]	epoch=9/50	train_loss=0.009070	val_mae=0.057698	val_rmse=0.096881	val_r2=0.829469
+Energigran[KAN]	epoch=10/50	train_loss=0.008817	val_mae=0.056585	val_rmse=0.095279	val_r2=0.835062
+Energigran[KAN]	epoch=11/50	train_loss=0.008638	val_mae=0.056059	val_rmse=0.095262	val_r2=0.835121
+Energigran[KAN]	epoch=12/50	train_loss=0.008456	val_mae=0.054838	val_rmse=0.094771	val_r2=0.836816
+Energigran[KAN]	epoch=13/50	train_loss=0.008321	val_mae=0.054327	val_rmse=0.095198	val_r2=0.835340
+Energigran[KAN]	epoch=14/50	train_loss=0.008189	val_mae=0.053742	val_rmse=0.093446	val_r2=0.841346
+Energigran[KAN]	epoch=15/50	train_loss=0.008030	val_mae=0.052774	val_rmse=0.092747	val_r2=0.843710
+Energigran[KAN]	epoch=16/50	train_loss=0.007894	val_mae=0.052242	val_rmse=0.092181	val_r2=0.845611
+Energigran[KAN]	epoch=17/50	train_loss=0.007750	val_mae=0.051382	val_rmse=0.091327	val_r2=0.848461
+Energigran[KAN]	epoch=18/50	train_loss=0.007673	val_mae=0.050884	val_rmse=0.090848	val_r2=0.850044
+Energigran[KAN]	epoch=19/50	train_loss=0.007462	val_mae=0.050199	val_rmse=0.090223	val_r2=0.852102
+Energigran[KAN]	epoch=20/50	train_loss=0.007318	val_mae=0.049998	val_rmse=0.089754	val_r2=0.853636
+Energigran[KAN]	epoch=21/50	train_loss=0.007205	val_mae=0.049896	val_rmse=0.089379	val_r2=0.854855
+Energigran[KAN]	epoch=22/50	train_loss=0.007136	val_mae=0.049894	val_rmse=0.089214	val_r2=0.855391
+Energigran[KAN]	epoch=23/50	train_loss=0.007015	val_mae=0.049321	val_rmse=0.089329	val_r2=0.855018
+Energigran[KAN]	epoch=24/50	train_loss=0.006976	val_mae=0.048057	val_rmse=0.087334	val_r2=0.861421
+Energigran[KAN]	epoch=25/50	train_loss=0.006860	val_mae=0.048268	val_rmse=0.087425	val_r2=0.861132
+Energigran[KAN]	epoch=26/50	train_loss=0.006786	val_mae=0.047856	val_rmse=0.087066	val_r2=0.862271
+Energigran[KAN]	epoch=27/50	train_loss=0.006683	val_mae=0.047209	val_rmse=0.086445	val_r2=0.864229
+Energigran[KAN]	epoch=28/50	train_loss=0.006628	val_mae=0.046872	val_rmse=0.085892	val_r2=0.865960
+Energigran[KAN]	epoch=29/50	train_loss=0.006537	val_mae=0.046325	val_rmse=0.085407	val_r2=0.867470
+Energigran[KAN]	epoch=30/50	train_loss=0.006420	val_mae=0.046551	val_rmse=0.085473	val_r2=0.867265
+Energigran[KAN]	epoch=31/50	train_loss=0.006392	val_mae=0.046265	val_rmse=0.085369	val_r2=0.867587
+Energigran[KAN]	epoch=32/50	train_loss=0.006346	val_mae=0.045961	val_rmse=0.084866	val_r2=0.869143
+Energigran[KAN]	epoch=33/50	train_loss=0.006351	val_mae=0.045741	val_rmse=0.084571	val_r2=0.870051
+Energigran[KAN]	epoch=34/50	train_loss=0.006216	val_mae=0.045297	val_rmse=0.084155	val_r2=0.871325
+Energigran[KAN]	epoch=35/50	train_loss=0.006136	val_mae=0.044879	val_rmse=0.083582	val_r2=0.873073
+Energigran[KAN]	epoch=36/50	train_loss=0.006056	val_mae=0.044660	val_rmse=0.083318	val_r2=0.873874
+Energigran[KAN]	epoch=37/50	train_loss=0.006043	val_mae=0.044689	val_rmse=0.083186	val_r2=0.874272
+Energigran[KAN]	epoch=38/50	train_loss=0.005945	val_mae=0.044789	val_rmse=0.083145	val_r2=0.874397
+Energigran[KAN]	epoch=39/50	train_loss=0.005929	val_mae=0.044425	val_rmse=0.082802	val_r2=0.875431
+Energigran[KAN]	epoch=40/50	train_loss=0.005829	val_mae=0.044172	val_rmse=0.082507	val_r2=0.876317
+Energigran[KAN]	epoch=41/50	train_loss=0.005788	val_mae=0.043989	val_rmse=0.082205	val_r2=0.877219
+Energigran[KAN]	epoch=42/50	train_loss=0.005761	val_mae=0.043754	val_rmse=0.082062	val_r2=0.877646
+Energigran[KAN]	epoch=43/50	train_loss=0.005698	val_mae=0.043353	val_rmse=0.081750	val_r2=0.878577
+Energigran[KAN]	epoch=44/50	train_loss=0.005673	val_mae=0.043625	val_rmse=0.081853	val_r2=0.878269
+Energigran[KAN]	epoch=45/50	train_loss=0.005623	val_mae=0.043664	val_rmse=0.081737	val_r2=0.878615
+Energigran[KAN]	epoch=46/50	train_loss=0.005583	val_mae=0.043467	val_rmse=0.081690	val_r2=0.878755
+Energigran[KAN]	epoch=47/50	train_loss=0.005554	val_mae=0.043197	val_rmse=0.081714	val_r2=0.878683
+Energigran[KAN]	epoch=48/50	train_loss=0.005468	val_mae=0.043263	val_rmse=0.082593	val_r2=0.876058
+Energigran[KAN]	epoch=49/50	train_loss=0.005618	val_mae=0.043607	val_rmse=0.083377	val_r2=0.873694
+Energigran[KAN]	epoch=50/50	train_loss=0.005477	val_mae=0.044338	val_rmse=0.083391	val_r2=0.873652
+Energigran[KAN]	best_val_n=968	best_val_mae=0.043197	best_val_rmse=0.081714	best_val_r2=0.878683	best_val_mae_raw=438.065246	best_val_rmse_raw=828.676549	best_val_max_abs_err_raw=3916.614990	best_val_p95_abs_err_raw=2017.079346	best_val_p99_abs_err_raw=3076.463379	best_val_tail5_mean_abs_err_raw=2570.796875
+KAN best_val: n=968 mae_model=0.043197 rmse_model=0.081714 r2=0.878683 mae_raw=438.065246 rmse_raw=828.676549 max_abs_err_raw=3916.614990 p95_abs_err_raw=2017.079346 p99_abs_err_raw=3076.463379 tail5_mean_abs_err_raw=2570.796875
+KAN test: n=1212 mae_model=0.042214 rmse_model=0.080404 r2=0.875956 mae_raw=428.096675 rmse_raw=815.390838 max_abs_err_raw=5316.923340 p95_abs_err_raw=2019.897705 p99_abs_err_raw=2836.130615 tail5_mean_abs_err_raw=2558.119385
+rule_violations[KAN:val]: overall_rate=0.315771 overall_pct=31.58% cases=2904 violations=917
+rule_violations[KAN:val] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.698347 pct=69.83% violations=676/968
+rule_violations[KAN:val] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.190083 pct=19.01% violations=184/968
+rule_violations[KAN:val] rule=radiation_up_implies_active_power_non_decreasing rate=0.058884 pct=5.89% violations=57/968
+rule_violations[KAN:test]: overall_rate=0.321782 overall_pct=32.18% cases=3636 violations=1170
+rule_violations[KAN:test] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.735149 pct=73.51% violations=891/1212
+rule_violations[KAN:test] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.179868 pct=17.99% violations=218/1212
+rule_violations[KAN:test] rule=radiation_up_implies_active_power_non_decreasing rate=0.050330 pct=5.03% violations=61/1212
+model_saved[KAN]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/SolarPlant/generation_h24_from_tsv_kan.bin
+elapsed[KAN]=157.83s
+Energigran[KAN-Mm]	epoch=1/50	mode=composite_metamorphic	train_total=0.100038	train_supervised=0.100038	train_relation_constraint_penalty=0.000000	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.199550	val_rmse=0.223062	val_r2=0.095978
+Energigran[KAN-Mm]	epoch=2/50	mode=composite_metamorphic	train_total=0.035079	train_supervised=0.035076	train_relation_constraint_penalty=0.000003	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.131903	val_rmse=0.160300	val_r2=0.533126
+Energigran[KAN-Mm]	epoch=3/50	mode=composite_metamorphic	train_total=0.017940	train_supervised=0.017921	train_relation_constraint_penalty=0.000019	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.088458	val_rmse=0.115824	val_r2=0.756258
+Energigran[KAN-Mm]	epoch=4/50	mode=composite_metamorphic	train_total=0.013006	train_supervised=0.012980	train_relation_constraint_penalty=0.000026	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.073516	val_rmse=0.105771	val_r2=0.796735
+Energigran[KAN-Mm]	epoch=5/50	mode=composite_metamorphic	train_total=0.011341	train_supervised=0.011316	train_relation_constraint_penalty=0.000025	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.067206	val_rmse=0.101303	val_r2=0.813544
+Energigran[KAN-Mm]	epoch=6/50	mode=composite_metamorphic	train_total=0.010370	train_supervised=0.010346	train_relation_constraint_penalty=0.000023	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.062988	val_rmse=0.098913	val_r2=0.822238
+Energigran[KAN-Mm]	epoch=7/50	mode=composite_metamorphic	train_total=0.009723	train_supervised=0.009702	train_relation_constraint_penalty=0.000021	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.061059	val_rmse=0.097967	val_r2=0.825623
+Energigran[KAN-Mm]	epoch=8/50	mode=composite_metamorphic	train_total=0.009310	train_supervised=0.009292	train_relation_constraint_penalty=0.000018	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.059296	val_rmse=0.096972	val_r2=0.829149
+Energigran[KAN-Mm]	epoch=9/50	mode=composite_metamorphic	train_total=0.009080	train_supervised=0.009063	train_relation_constraint_penalty=0.000016	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.057711	val_rmse=0.096884	val_r2=0.829459
+Energigran[KAN-Mm]	epoch=10/50	mode=composite_metamorphic	train_total=0.008824	train_supervised=0.008810	train_relation_constraint_penalty=0.000014	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.056596	val_rmse=0.095275	val_r2=0.835074
+Energigran[KAN-Mm]	epoch=11/50	mode=composite_metamorphic	train_total=0.008643	train_supervised=0.008630	train_relation_constraint_penalty=0.000013	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.056067	val_rmse=0.095257	val_r2=0.835138
+Energigran[KAN-Mm]	epoch=12/50	mode=composite_metamorphic	train_total=0.008459	train_supervised=0.008448	train_relation_constraint_penalty=0.000011	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054851	val_rmse=0.094775	val_r2=0.836800
+Energigran[KAN-Mm]	epoch=13/50	mode=composite_metamorphic	train_total=0.008323	train_supervised=0.008313	train_relation_constraint_penalty=0.000010	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054346	val_rmse=0.095215	val_r2=0.835283
+Energigran[KAN-Mm]	epoch=14/50	mode=composite_metamorphic	train_total=0.008191	train_supervised=0.008183	train_relation_constraint_penalty=0.000009	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.053748	val_rmse=0.093443	val_r2=0.841356
+Energigran[KAN-Mm]	epoch=15/50	mode=composite_metamorphic	train_total=0.008031	train_supervised=0.008023	train_relation_constraint_penalty=0.000008	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052787	val_rmse=0.092747	val_r2=0.843712
+Energigran[KAN-Mm]	epoch=16/50	mode=composite_metamorphic	train_total=0.007895	train_supervised=0.007887	train_relation_constraint_penalty=0.000007	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052253	val_rmse=0.092181	val_r2=0.845611
+Energigran[KAN-Mm]	epoch=17/50	mode=composite_metamorphic	train_total=0.007751	train_supervised=0.007745	train_relation_constraint_penalty=0.000006	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.051395	val_rmse=0.091325	val_r2=0.848467
+Energigran[KAN-Mm]	epoch=18/50	mode=composite_metamorphic	train_total=0.007675	train_supervised=0.007669	train_relation_constraint_penalty=0.000006	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.050899	val_rmse=0.090850	val_r2=0.850039
+Energigran[KAN-Mm]	epoch=19/50	mode=composite_metamorphic	train_total=0.007463	train_supervised=0.007458	train_relation_constraint_penalty=0.000006	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.050220	val_rmse=0.090226	val_r2=0.852091
+Energigran[KAN-Mm]	epoch=20/50	mode=composite_metamorphic	train_total=0.007320	train_supervised=0.007315	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.050016	val_rmse=0.089759	val_r2=0.853618
+Energigran[KAN-Mm]	epoch=21/50	mode=composite_metamorphic	train_total=0.007207	train_supervised=0.007202	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.049910	val_rmse=0.089383	val_r2=0.854842
+Energigran[KAN-Mm]	epoch=22/50	mode=composite_metamorphic	train_total=0.007139	train_supervised=0.007134	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.049906	val_rmse=0.089221	val_r2=0.855368
+Energigran[KAN-Mm]	epoch=23/50	mode=composite_metamorphic	train_total=0.007018	train_supervised=0.007014	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.049348	val_rmse=0.089353	val_r2=0.854940
+Energigran[KAN-Mm]	epoch=24/50	mode=composite_metamorphic	train_total=0.006980	train_supervised=0.006975	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.048076	val_rmse=0.087348	val_r2=0.861378
+Energigran[KAN-Mm]	epoch=25/50	mode=composite_metamorphic	train_total=0.006864	train_supervised=0.006860	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.048290	val_rmse=0.087437	val_r2=0.861095
+Energigran[KAN-Mm]	epoch=26/50	mode=composite_metamorphic	train_total=0.006790	train_supervised=0.006786	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.047879	val_rmse=0.087088	val_r2=0.862202
+Energigran[KAN-Mm]	epoch=27/50	mode=composite_metamorphic	train_total=0.006688	train_supervised=0.006684	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.047239	val_rmse=0.086473	val_r2=0.864139
+Energigran[KAN-Mm]	epoch=28/50	mode=composite_metamorphic	train_total=0.006634	train_supervised=0.006630	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.046902	val_rmse=0.085917	val_r2=0.865882
+Energigran[KAN-Mm]	epoch=29/50	mode=composite_metamorphic	train_total=0.006542	train_supervised=0.006538	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.046350	val_rmse=0.085431	val_r2=0.867395
+Energigran[KAN-Mm]	epoch=30/50	mode=composite_metamorphic	train_total=0.006427	train_supervised=0.006422	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.046575	val_rmse=0.085492	val_r2=0.867205
+Energigran[KAN-Mm]	epoch=31/50	mode=composite_metamorphic	train_total=0.006398	train_supervised=0.006393	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.046288	val_rmse=0.085393	val_r2=0.867512
+Energigran[KAN-Mm]	epoch=32/50	mode=composite_metamorphic	train_total=0.006353	train_supervised=0.006348	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.045978	val_rmse=0.084893	val_r2=0.869060
+Energigran[KAN-Mm]	epoch=33/50	mode=composite_metamorphic	train_total=0.006358	train_supervised=0.006354	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.045756	val_rmse=0.084597	val_r2=0.869973
+Energigran[KAN-Mm]	epoch=34/50	mode=composite_metamorphic	train_total=0.006223	train_supervised=0.006218	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.045327	val_rmse=0.084169	val_r2=0.871285
+Energigran[KAN-Mm]	epoch=35/50	mode=composite_metamorphic	train_total=0.006143	train_supervised=0.006139	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044905	val_rmse=0.083597	val_r2=0.873028
+Energigran[KAN-Mm]	epoch=36/50	mode=composite_metamorphic	train_total=0.006063	train_supervised=0.006059	train_relation_constraint_penalty=0.000005	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044682	val_rmse=0.083334	val_r2=0.873826
+Energigran[KAN-Mm]	epoch=37/50	mode=composite_metamorphic	train_total=0.006051	train_supervised=0.006047	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044714	val_rmse=0.083200	val_r2=0.874229
+Energigran[KAN-Mm]	epoch=38/50	mode=composite_metamorphic	train_total=0.005953	train_supervised=0.005949	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044810	val_rmse=0.083152	val_r2=0.874374
+Energigran[KAN-Mm]	epoch=39/50	mode=composite_metamorphic	train_total=0.005936	train_supervised=0.005932	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044447	val_rmse=0.082810	val_r2=0.875406
+Energigran[KAN-Mm]	epoch=40/50	mode=composite_metamorphic	train_total=0.005837	train_supervised=0.005833	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044192	val_rmse=0.082512	val_r2=0.876303
+Energigran[KAN-Mm]	epoch=41/50	mode=composite_metamorphic	train_total=0.005796	train_supervised=0.005792	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044003	val_rmse=0.082214	val_r2=0.877194
+Energigran[KAN-Mm]	epoch=42/50	mode=composite_metamorphic	train_total=0.005770	train_supervised=0.005766	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043778	val_rmse=0.082067	val_r2=0.877632
+Energigran[KAN-Mm]	epoch=43/50	mode=composite_metamorphic	train_total=0.005706	train_supervised=0.005702	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043382	val_rmse=0.081757	val_r2=0.878555
+Energigran[KAN-Mm]	epoch=44/50	mode=composite_metamorphic	train_total=0.005681	train_supervised=0.005677	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043641	val_rmse=0.081870	val_r2=0.878219
+Energigran[KAN-Mm]	epoch=45/50	mode=composite_metamorphic	train_total=0.005631	train_supervised=0.005627	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043701	val_rmse=0.081757	val_r2=0.878556
+Energigran[KAN-Mm]	epoch=46/50	mode=composite_metamorphic	train_total=0.005592	train_supervised=0.005588	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043488	val_rmse=0.081697	val_r2=0.878732
+Energigran[KAN-Mm]	epoch=47/50	mode=composite_metamorphic	train_total=0.005563	train_supervised=0.005559	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043227	val_rmse=0.081721	val_r2=0.878661
+Energigran[KAN-Mm]	epoch=48/50	mode=composite_metamorphic	train_total=0.005477	train_supervised=0.005473	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043284	val_rmse=0.082585	val_r2=0.876082
+Energigran[KAN-Mm]	epoch=49/50	mode=composite_metamorphic	train_total=0.005627	train_supervised=0.005623	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.043661	val_rmse=0.083395	val_r2=0.873641
+Energigran[KAN-Mm]	epoch=50/50	mode=composite_metamorphic	train_total=0.005487	train_supervised=0.005483	train_relation_constraint_penalty=0.000004	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.044351	val_rmse=0.083405	val_r2=0.873611
+Energigran[KAN-Mm]	best_val_n=968	best_val_mae=0.043227	best_val_rmse=0.081721	best_val_r2=0.878661	best_val_mae_raw=438.370424	best_val_rmse_raw=828.751805	best_val_max_abs_err_raw=3906.507568	best_val_p95_abs_err_raw=2011.272095	best_val_p99_abs_err_raw=3068.386963	best_val_tail5_mean_abs_err_raw=2570.739258
+KAN-Mm best_val: n=968 mae_model=0.043227 rmse_model=0.081721 r2=0.878661 mae_raw=438.370424 rmse_raw=828.751805 max_abs_err_raw=3906.507568 p95_abs_err_raw=2011.272095 p99_abs_err_raw=3068.386963 tail5_mean_abs_err_raw=2570.739258
+KAN-Mm test: n=1212 mae_model=0.042275 rmse_model=0.080468 r2=0.875758 mae_raw=428.716060 rmse_raw=816.040031 max_abs_err_raw=5308.711914 p95_abs_err_raw=2031.352661 p99_abs_err_raw=2839.157227 tail5_mean_abs_err_raw=2561.734131
+rule_violations[KAN-Mm:val]: overall_rate=0.289945 overall_pct=28.99% cases=2904 violations=842
+rule_violations[KAN-Mm:val] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.643595 pct=64.36% violations=623/968
+rule_violations[KAN-Mm:val] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.183884 pct=18.39% violations=178/968
+rule_violations[KAN-Mm:val] rule=radiation_up_implies_active_power_non_decreasing rate=0.042355 pct=4.24% violations=41/968
+rule_violations[KAN-Mm:test]: overall_rate=0.295930 overall_pct=29.59% cases=3636 violations=1076
+rule_violations[KAN-Mm:test] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.679043 pct=67.90% violations=823/1212
+rule_violations[KAN-Mm:test] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.172442 pct=17.24% violations=209/1212
+rule_violations[KAN-Mm:test] rule=radiation_up_implies_active_power_non_decreasing rate=0.036304 pct=3.63% violations=44/1212
+model_saved[KAN-Mm]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/SolarPlant/generation_h24_from_tsv_kan_mm.bin
+elapsed[KAN-Mm]=303.57s
+Energigran[tabnet]	epoch=1/50	mode=baseline_mse	train_loss=0.036618	val_mae=0.075962	val_rmse=0.104158	val_r2=0.802886
+Energigran[tabnet]	epoch=2/50	mode=baseline_mse	train_loss=0.010772	val_mae=0.058885	val_rmse=0.092175	val_r2=0.845634
+Energigran[tabnet]	epoch=3/50	mode=baseline_mse	train_loss=0.009660	val_mae=0.052957	val_rmse=0.093462	val_r2=0.841292
+Energigran[tabnet]	epoch=4/50	mode=baseline_mse	train_loss=0.009331	val_mae=0.057835	val_rmse=0.090290	val_r2=0.851881
+Energigran[tabnet]	epoch=5/50	mode=baseline_mse	train_loss=0.008900	val_mae=0.056841	val_rmse=0.090925	val_r2=0.849792
+Energigran[tabnet]	epoch=6/50	mode=baseline_mse	train_loss=0.008612	val_mae=0.056690	val_rmse=0.089899	val_r2=0.853161
+Energigran[tabnet]	epoch=7/50	mode=baseline_mse	train_loss=0.008713	val_mae=0.055983	val_rmse=0.089719	val_r2=0.853748
+Energigran[tabnet]	epoch=8/50	mode=baseline_mse	train_loss=0.008417	val_mae=0.049331	val_rmse=0.087770	val_r2=0.860033
+Energigran[tabnet]	epoch=9/50	mode=baseline_mse	train_loss=0.007707	val_mae=0.053859	val_rmse=0.087292	val_r2=0.861553
+Energigran[tabnet]	epoch=10/50	mode=baseline_mse	train_loss=0.007580	val_mae=0.052461	val_rmse=0.085835	val_r2=0.866138
+Energigran[tabnet]	epoch=11/50	mode=baseline_mse	train_loss=0.008522	val_mae=0.054375	val_rmse=0.090309	val_r2=0.851818
+Energigran[tabnet]	epoch=12/50	mode=baseline_mse	train_loss=0.038798	val_mae=0.125925	val_rmse=0.222083	val_r2=0.103895
+Energigran[tabnet]	epoch=13/50	mode=baseline_mse	train_loss=0.015394	val_mae=0.065391	val_rmse=0.108393	val_r2=0.786534
+Energigran[tabnet]	epoch=14/50	mode=baseline_mse	train_loss=0.012149	val_mae=0.056098	val_rmse=0.096088	val_r2=0.832249
+Energigran[tabnet]	epoch=15/50	mode=baseline_mse	train_loss=0.010300	val_mae=0.055405	val_rmse=0.091755	val_r2=0.847037
+Energigran[tabnet]	epoch=16/50	mode=baseline_mse	train_loss=0.009518	val_mae=0.055182	val_rmse=0.087396	val_r2=0.861223
+Energigran[tabnet]	epoch=17/50	mode=baseline_mse	train_loss=0.009630	val_mae=0.050601	val_rmse=0.087664	val_r2=0.860373
+Energigran[tabnet]	epoch=18/50	mode=baseline_mse	train_loss=0.008520	val_mae=0.050527	val_rmse=0.086356	val_r2=0.864509
+Energigran[tabnet]	epoch=19/50	mode=baseline_mse	train_loss=0.008711	val_mae=0.052599	val_rmse=0.086317	val_r2=0.864631
+Energigran[tabnet]	epoch=20/50	mode=baseline_mse	train_loss=0.008849	val_mae=0.048820	val_rmse=0.085377	val_r2=0.867563
+Energigran[tabnet]	epoch=21/50	mode=baseline_mse	train_loss=0.008506	val_mae=0.049732	val_rmse=0.085334	val_r2=0.867695
+Energigran[tabnet]	epoch=22/50	mode=baseline_mse	train_loss=0.008230	val_mae=0.052878	val_rmse=0.089333	val_r2=0.855004
+Energigran[tabnet]	epoch=23/50	mode=baseline_mse	train_loss=0.008007	val_mae=0.048794	val_rmse=0.085836	val_r2=0.866135
+Energigran[tabnet]	epoch=24/50	mode=baseline_mse	train_loss=0.007863	val_mae=0.050568	val_rmse=0.086882	val_r2=0.862853
+Energigran[tabnet]	epoch=25/50	mode=baseline_mse	train_loss=0.007811	val_mae=0.047848	val_rmse=0.082536	val_r2=0.876230
+Energigran[tabnet]	epoch=26/50	mode=baseline_mse	train_loss=0.007732	val_mae=0.050208	val_rmse=0.086941	val_r2=0.862667
+Energigran[tabnet]	epoch=27/50	mode=baseline_mse	train_loss=0.007599	val_mae=0.049468	val_rmse=0.083224	val_r2=0.874158
+Energigran[tabnet]	epoch=28/50	mode=baseline_mse	train_loss=0.007482	val_mae=0.047296	val_rmse=0.084562	val_r2=0.870080
+Energigran[tabnet]	epoch=29/50	mode=baseline_mse	train_loss=0.007172	val_mae=0.049135	val_rmse=0.085789	val_r2=0.866281
+Energigran[tabnet]	epoch=30/50	mode=baseline_mse	train_loss=0.007430	val_mae=0.046033	val_rmse=0.082174	val_r2=0.877312
+Energigran[tabnet]	epoch=31/50	mode=baseline_mse	train_loss=0.007472	val_mae=0.048704	val_rmse=0.084474	val_r2=0.870350
+Energigran[tabnet]	epoch=32/50	mode=baseline_mse	train_loss=0.007613	val_mae=0.045860	val_rmse=0.081042	val_r2=0.880670
+Energigran[tabnet]	epoch=33/50	mode=baseline_mse	train_loss=0.007212	val_mae=0.052974	val_rmse=0.088361	val_r2=0.858144
+Energigran[tabnet]	epoch=34/50	mode=baseline_mse	train_loss=0.007686	val_mae=0.052947	val_rmse=0.089302	val_r2=0.855107
+Energigran[tabnet]	epoch=35/50	mode=baseline_mse	train_loss=0.007086	val_mae=0.046768	val_rmse=0.084097	val_r2=0.871502
+Energigran[tabnet]	epoch=36/50	mode=baseline_mse	train_loss=0.006913	val_mae=0.045016	val_rmse=0.080541	val_r2=0.882140
+Energigran[tabnet]	epoch=37/50	mode=baseline_mse	train_loss=0.006932	val_mae=0.047766	val_rmse=0.083062	val_r2=0.874648
+Energigran[tabnet]	epoch=38/50	mode=baseline_mse	train_loss=0.007079	val_mae=0.046085	val_rmse=0.083146	val_r2=0.874394
+Energigran[tabnet]	epoch=39/50	mode=baseline_mse	train_loss=0.007003	val_mae=0.045461	val_rmse=0.084721	val_r2=0.869589
+Energigran[tabnet]	epoch=40/50	mode=baseline_mse	train_loss=0.007075	val_mae=0.046720	val_rmse=0.085742	val_r2=0.866428
+Energigran[tabnet]	epoch=41/50	mode=baseline_mse	train_loss=0.006934	val_mae=0.045115	val_rmse=0.081079	val_r2=0.880560
+Energigran[tabnet]	epoch=42/50	mode=baseline_mse	train_loss=0.006977	val_mae=0.043374	val_rmse=0.081822	val_r2=0.878361
+Energigran[tabnet]	epoch=43/50	mode=baseline_mse	train_loss=0.006929	val_mae=0.046917	val_rmse=0.080842	val_r2=0.881258
+Energigran[tabnet]	epoch=44/50	mode=baseline_mse	train_loss=0.006803	val_mae=0.047500	val_rmse=0.086712	val_r2=0.863387
+Energigran[tabnet]	epoch=45/50	mode=baseline_mse	train_loss=0.006494	val_mae=0.048401	val_rmse=0.085894	val_r2=0.865955
+Energigran[tabnet]	epoch=46/50	mode=baseline_mse	train_loss=0.006847	val_mae=0.044804	val_rmse=0.082239	val_r2=0.877119
+Energigran[tabnet]	epoch=47/50	mode=baseline_mse	train_loss=0.006372	val_mae=0.050523	val_rmse=0.087160	val_r2=0.861971
+Energigran[tabnet]	epoch=48/50	mode=baseline_mse	train_loss=0.006297	val_mae=0.043856	val_rmse=0.081498	val_r2=0.879323
+Energigran[tabnet]	epoch=49/50	mode=baseline_mse	train_loss=0.006692	val_mae=0.045162	val_rmse=0.083038	val_r2=0.874718
+Energigran[tabnet]	epoch=50/50	mode=baseline_mse	train_loss=0.006432	val_mae=0.043237	val_rmse=0.080428	val_r2=0.882471
+Energigran[tabnet]	best_val_n=968	best_val_mae=0.043237	best_val_rmse=0.080428	best_val_r2=0.882471	best_val_mae_raw=438.473485	best_val_rmse_raw=815.637384	best_val_max_abs_err_raw=3693.864502	best_val_p95_abs_err_raw=1997.174194	best_val_p99_abs_err_raw=2777.388184	best_val_tail5_mean_abs_err_raw=2532.975830
+tabnet best_val: n=968 mae_model=0.043237 rmse_model=0.080428 r2=0.882471 mae_raw=438.473485 rmse_raw=815.637384 max_abs_err_raw=3693.864502 p95_abs_err_raw=1997.174194 p99_abs_err_raw=2777.388184 tail5_mean_abs_err_raw=2532.975830
+tabnet test: n=1212 mae_model=0.044416 rmse_model=0.083452 r2=0.866373 mae_raw=450.432513 rmse_raw=846.301848 max_abs_err_raw=5335.358398 p95_abs_err_raw=2060.023438 p99_abs_err_raw=3025.819824 tail5_mean_abs_err_raw=2644.914551
+rule_violations[tabnet:val]: overall_rate=0.421832 overall_pct=42.18% cases=2904 violations=1225
+rule_violations[tabnet:val] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.918388 pct=91.84% violations=889/968
+rule_violations[tabnet:val] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.231405 pct=23.14% violations=224/968
+rule_violations[tabnet:val] rule=radiation_up_implies_active_power_non_decreasing rate=0.115702 pct=11.57% violations=112/968
+rule_violations[tabnet:test]: overall_rate=0.416667 overall_pct=41.67% cases=3636 violations=1515
+rule_violations[tabnet:test] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.919142 pct=91.91% violations=1114/1212
+rule_violations[tabnet:test] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.231848 pct=23.18% violations=281/1212
+rule_violations[tabnet:test] rule=radiation_up_implies_active_power_non_decreasing rate=0.099010 pct=9.90% violations=120/1212
+model_saved[tabnet]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/SolarPlant/generation_h24_from_tsv_tabnet.bin
+elapsed[tabnet]=173.08s
+Energigran[tabnet-mr]	epoch=1/50	mode=composite_metamorphic	train_total=0.039328	train_supervised=0.037226	train_relation_constraint_penalty=0.002102	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.074418	val_rmse=0.108497	val_r2=0.786121
+Energigran[tabnet-mr]	epoch=2/50	mode=composite_metamorphic	train_total=0.012611	train_supervised=0.011018	train_relation_constraint_penalty=0.001593	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.066719	val_rmse=0.113186	val_r2=0.767237
+Energigran[tabnet-mr]	epoch=3/50	mode=composite_metamorphic	train_total=0.011160	train_supervised=0.009652	train_relation_constraint_penalty=0.001508	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.079467	val_rmse=0.141376	val_r2=0.636855
+Energigran[tabnet-mr]	epoch=4/50	mode=composite_metamorphic	train_total=0.010809	train_supervised=0.009346	train_relation_constraint_penalty=0.001463	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058916	val_rmse=0.095563	val_r2=0.834076
+Energigran[tabnet-mr]	epoch=5/50	mode=composite_metamorphic	train_total=0.010475	train_supervised=0.009038	train_relation_constraint_penalty=0.001437	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.063157	val_rmse=0.105382	val_r2=0.798227
+Energigran[tabnet-mr]	epoch=6/50	mode=composite_metamorphic	train_total=0.010073	train_supervised=0.008768	train_relation_constraint_penalty=0.001304	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.062608	val_rmse=0.101945	val_r2=0.811174
+Energigran[tabnet-mr]	epoch=7/50	mode=composite_metamorphic	train_total=0.010257	train_supervised=0.008880	train_relation_constraint_penalty=0.001377	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058385	val_rmse=0.092164	val_r2=0.845669
+Energigran[tabnet-mr]	epoch=8/50	mode=composite_metamorphic	train_total=0.009744	train_supervised=0.008475	train_relation_constraint_penalty=0.001268	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.047951	val_rmse=0.091509	val_r2=0.847856
+Energigran[tabnet-mr]	epoch=9/50	mode=composite_metamorphic	train_total=0.009323	train_supervised=0.008021	train_relation_constraint_penalty=0.001302	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.064191	val_rmse=0.099102	val_r2=0.821560
+Energigran[tabnet-mr]	epoch=10/50	mode=composite_metamorphic	train_total=0.008976	train_supervised=0.007665	train_relation_constraint_penalty=0.001311	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058952	val_rmse=0.101157	val_r2=0.814080
+Energigran[tabnet-mr]	epoch=11/50	mode=composite_metamorphic	train_total=0.009731	train_supervised=0.008409	train_relation_constraint_penalty=0.001322	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054663	val_rmse=0.099514	val_r2=0.820073
+Energigran[tabnet-mr]	epoch=12/50	mode=composite_metamorphic	train_total=0.009072	train_supervised=0.007831	train_relation_constraint_penalty=0.001240	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.059915	val_rmse=0.104839	val_r2=0.800300
+Energigran[tabnet-mr]	epoch=13/50	mode=composite_metamorphic	train_total=0.008861	train_supervised=0.007634	train_relation_constraint_penalty=0.001228	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.061782	val_rmse=0.108459	val_r2=0.786271
+Energigran[tabnet-mr]	epoch=14/50	mode=composite_metamorphic	train_total=0.009004	train_supervised=0.007769	train_relation_constraint_penalty=0.001235	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.056449	val_rmse=0.095983	val_r2=0.832616
+Energigran[tabnet-mr]	epoch=15/50	mode=composite_metamorphic	train_total=0.008774	train_supervised=0.007532	train_relation_constraint_penalty=0.001242	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054147	val_rmse=0.094559	val_r2=0.837546
+Energigran[tabnet-mr]	epoch=16/50	mode=composite_metamorphic	train_total=0.008603	train_supervised=0.007393	train_relation_constraint_penalty=0.001211	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054225	val_rmse=0.097770	val_r2=0.826323
+Energigran[tabnet-mr]	epoch=17/50	mode=composite_metamorphic	train_total=0.008676	train_supervised=0.007474	train_relation_constraint_penalty=0.001202	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.047435	val_rmse=0.088282	val_r2=0.858395
+Energigran[tabnet-mr]	epoch=18/50	mode=composite_metamorphic	train_total=0.008135	train_supervised=0.006885	train_relation_constraint_penalty=0.001250	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.061161	val_rmse=0.104671	val_r2=0.800940
+Energigran[tabnet-mr]	epoch=19/50	mode=composite_metamorphic	train_total=0.008197	train_supervised=0.007027	train_relation_constraint_penalty=0.001170	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.079723	val_rmse=0.135714	val_r2=0.665358
+Energigran[tabnet-mr]	epoch=20/50	mode=composite_metamorphic	train_total=0.008606	train_supervised=0.007368	train_relation_constraint_penalty=0.001238	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.062821	val_rmse=0.111514	val_r2=0.774064
+Energigran[tabnet-mr]	epoch=21/50	mode=composite_metamorphic	train_total=0.008526	train_supervised=0.007308	train_relation_constraint_penalty=0.001218	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058129	val_rmse=0.102211	val_r2=0.810186
+Energigran[tabnet-mr]	epoch=22/50	mode=composite_metamorphic	train_total=0.008370	train_supervised=0.007166	train_relation_constraint_penalty=0.001204	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.066514	val_rmse=0.109639	val_r2=0.781598
+Energigran[tabnet-mr]	epoch=23/50	mode=composite_metamorphic	train_total=0.008085	train_supervised=0.006901	train_relation_constraint_penalty=0.001183	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.054470	val_rmse=0.095742	val_r2=0.833454
+Energigran[tabnet-mr]	epoch=24/50	mode=composite_metamorphic	train_total=0.008083	train_supervised=0.006905	train_relation_constraint_penalty=0.001178	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.049475	val_rmse=0.091366	val_r2=0.848332
+Energigran[tabnet-mr]	epoch=25/50	mode=composite_metamorphic	train_total=0.007996	train_supervised=0.006783	train_relation_constraint_penalty=0.001213	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.053150	val_rmse=0.088246	val_r2=0.858511
+Energigran[tabnet-mr]	epoch=26/50	mode=composite_metamorphic	train_total=0.008127	train_supervised=0.006926	train_relation_constraint_penalty=0.001201	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.057481	val_rmse=0.098962	val_r2=0.822064
+Energigran[tabnet-mr]	epoch=27/50	mode=composite_metamorphic	train_total=0.007994	train_supervised=0.006790	train_relation_constraint_penalty=0.001203	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.048341	val_rmse=0.089315	val_r2=0.855062
+Energigran[tabnet-mr]	epoch=28/50	mode=composite_metamorphic	train_total=0.007901	train_supervised=0.006667	train_relation_constraint_penalty=0.001234	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052021	val_rmse=0.095178	val_r2=0.835410
+Energigran[tabnet-mr]	epoch=29/50	mode=composite_metamorphic	train_total=0.007813	train_supervised=0.006595	train_relation_constraint_penalty=0.001218	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.049468	val_rmse=0.086846	val_r2=0.862967
+Energigran[tabnet-mr]	epoch=30/50	mode=composite_metamorphic	train_total=0.008107	train_supervised=0.006931	train_relation_constraint_penalty=0.001176	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052788	val_rmse=0.091898	val_r2=0.846559
+Energigran[tabnet-mr]	epoch=31/50	mode=composite_metamorphic	train_total=0.007842	train_supervised=0.006613	train_relation_constraint_penalty=0.001229	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.059159	val_rmse=0.109130	val_r2=0.783620
+Energigran[tabnet-mr]	epoch=32/50	mode=composite_metamorphic	train_total=0.008141	train_supervised=0.006974	train_relation_constraint_penalty=0.001166	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.053349	val_rmse=0.097502	val_r2=0.827273
+Energigran[tabnet-mr]	epoch=33/50	mode=composite_metamorphic	train_total=0.008043	train_supervised=0.006811	train_relation_constraint_penalty=0.001232	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.062596	val_rmse=0.102258	val_r2=0.810012
+Energigran[tabnet-mr]	epoch=34/50	mode=composite_metamorphic	train_total=0.007928	train_supervised=0.006705	train_relation_constraint_penalty=0.001223	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.067713	val_rmse=0.107671	val_r2=0.789365
+Energigran[tabnet-mr]	epoch=35/50	mode=composite_metamorphic	train_total=0.007680	train_supervised=0.006543	train_relation_constraint_penalty=0.001137	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058814	val_rmse=0.108118	val_r2=0.787615
+Energigran[tabnet-mr]	epoch=36/50	mode=composite_metamorphic	train_total=0.007396	train_supervised=0.006288	train_relation_constraint_penalty=0.001109	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052996	val_rmse=0.095326	val_r2=0.834899
+Energigran[tabnet-mr]	epoch=37/50	mode=composite_metamorphic	train_total=0.007685	train_supervised=0.006488	train_relation_constraint_penalty=0.001196	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.051519	val_rmse=0.089844	val_r2=0.853340
+Energigran[tabnet-mr]	epoch=38/50	mode=composite_metamorphic	train_total=0.007440	train_supervised=0.006266	train_relation_constraint_penalty=0.001173	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.058221	val_rmse=0.104584	val_r2=0.801270
+Energigran[tabnet-mr]	epoch=39/50	mode=composite_metamorphic	train_total=0.007567	train_supervised=0.006313	train_relation_constraint_penalty=0.001254	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.061166	val_rmse=0.115264	val_r2=0.758609
+Energigran[tabnet-mr]	epoch=40/50	mode=composite_metamorphic	train_total=0.007303	train_supervised=0.006125	train_relation_constraint_penalty=0.001179	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.073646	val_rmse=0.128865	val_r2=0.698281
+Energigran[tabnet-mr]	epoch=41/50	mode=composite_metamorphic	train_total=0.007613	train_supervised=0.006434	train_relation_constraint_penalty=0.001179	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.047681	val_rmse=0.090107	val_r2=0.852482
+Energigran[tabnet-mr]	epoch=42/50	mode=composite_metamorphic	train_total=0.007840	train_supervised=0.006643	train_relation_constraint_penalty=0.001198	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.060041	val_rmse=0.104899	val_r2=0.800073
+Energigran[tabnet-mr]	epoch=43/50	mode=composite_metamorphic	train_total=0.007556	train_supervised=0.006367	train_relation_constraint_penalty=0.001189	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.050751	val_rmse=0.090041	val_r2=0.852697
+Energigran[tabnet-mr]	epoch=44/50	mode=composite_metamorphic	train_total=0.007505	train_supervised=0.006278	train_relation_constraint_penalty=0.001227	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.059333	val_rmse=0.108805	val_r2=0.784908
+Energigran[tabnet-mr]	epoch=45/50	mode=composite_metamorphic	train_total=0.007158	train_supervised=0.005992	train_relation_constraint_penalty=0.001166	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.055960	val_rmse=0.102798	val_r2=0.808000
+Energigran[tabnet-mr]	epoch=46/50	mode=composite_metamorphic	train_total=0.007595	train_supervised=0.006395	train_relation_constraint_penalty=0.001200	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.052345	val_rmse=0.097658	val_r2=0.826722
+Energigran[tabnet-mr]	epoch=47/50	mode=composite_metamorphic	train_total=0.007332	train_supervised=0.006157	train_relation_constraint_penalty=0.001175	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.068699	val_rmse=0.110266	val_r2=0.779092
+Energigran[tabnet-mr]	epoch=48/50	mode=composite_metamorphic	train_total=0.007196	train_supervised=0.006050	train_relation_constraint_penalty=0.001146	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.057130	val_rmse=0.101827	val_r2=0.811609
+Energigran[tabnet-mr]	epoch=49/50	mode=composite_metamorphic	train_total=0.007430	train_supervised=0.006212	train_relation_constraint_penalty=0.001217	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.056828	val_rmse=0.103551	val_r2=0.805178
+Energigran[tabnet-mr]	epoch=50/50	mode=composite_metamorphic	train_total=0.007140	train_supervised=0.005961	train_relation_constraint_penalty=0.001180	train_worst_case_over_T_loss=0.000000	train_target_mapped=0.000000	val_mae=0.060624	val_rmse=0.106475	val_r2=0.794022
+Energigran[tabnet-mr]	best_val_n=968	best_val_mae=0.047435	best_val_rmse=0.088282	best_val_r2=0.858395	best_val_mae_raw=481.044276	best_val_rmse_raw=895.289086	best_val_max_abs_err_raw=4505.368164	best_val_p95_abs_err_raw=2038.487305	best_val_p99_abs_err_raw=3096.987061	best_val_tail5_mean_abs_err_raw=2794.268066
+tabnet-mr best_val: n=968 mae_model=0.047435 rmse_model=0.088282 r2=0.858395 mae_raw=481.044276 rmse_raw=895.289086 max_abs_err_raw=4505.368164 p95_abs_err_raw=2038.487305 p99_abs_err_raw=3096.987061 tail5_mean_abs_err_raw=2794.268066
+tabnet-mr test: n=1212 mae_model=0.047317 rmse_model=0.090711 r2=0.842114 mae_raw=479.846760 rmse_raw=919.919502 max_abs_err_raw=6517.716309 p95_abs_err_raw=2219.550781 p99_abs_err_raw=3280.113037 tail5_mean_abs_err_raw=2898.496338
+rule_violations[tabnet-mr:val]: overall_rate=0.351240 overall_pct=35.12% cases=2904 violations=1020
+rule_violations[tabnet-mr:val] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.859504 pct=85.95% violations=832/968
+rule_violations[tabnet-mr:val] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.162190 pct=16.22% violations=157/968
+rule_violations[tabnet-mr:val] rule=radiation_up_implies_active_power_non_decreasing rate=0.032025 pct=3.20% violations=31/968
+rule_violations[tabnet-mr:test]: overall_rate=0.352860 overall_pct=35.29% cases=3636 violations=1283
+rule_violations[tabnet-mr:test] rule=cell_temperature_up_tends_to_reduce_efficiency rate=0.865512 pct=86.55% violations=1049/1212
+rule_violations[tabnet-mr:test] rule=consumption_constant_with_grid_import_decreasing_generation_increases rate=0.159241 pct=15.92% violations=193/1212
+rule_violations[tabnet-mr:test] rule=radiation_up_implies_active_power_non_decreasing rate=0.033828 pct=3.38% violations=41/1212
+model_saved[tabnet-mr]=/Users/oroncal/workspace/projects/picota/temp/test-models-alternative/SolarPlant/generation_h24_from_tsv_tabnet_mr.bin
+elapsed[tabnet-mr]=312.39s
+shap_model=KAN
+shap_saved=/Users/oroncal/workspace/projects/picota/temp/analysis/solarPlant/generation_h24_shap_importance.csv
+shap_top_features:
+rank=1 feature=hour_cos mean_abs_shap_model=0.14563130 mean_abs_shap_raw=1476.87609951 share_percent=44.3794
+rank=2 feature=month_cos mean_abs_shap_model=0.04010191 mean_abs_shap_raw=406.68144918 share_percent=12.2206
+rank=3 feature=hour_sin mean_abs_shap_model=0.03281124 mean_abs_shap_raw=332.74534798 share_percent=9.9988
+rank=4 feature=grid mean_abs_shap_model=0.02314322 mean_abs_shap_raw=234.69998768 share_percent=7.0526
+rank=5 feature=month_sin mean_abs_shap_model=0.01753864 mean_abs_shap_raw=177.86290004 share_percent=5.3447
+rank=6 feature=consumption mean_abs_shap_model=0.01615543 mean_abs_shap_raw=163.83541259 share_percent=4.9232
+rank=7 feature=day_cos mean_abs_shap_model=0.01117410 mean_abs_shap_raw=113.31881319 share_percent=3.4052
+rank=8 feature=quarter_cos mean_abs_shap_model=0.01006339 mean_abs_shap_raw=102.05482896 share_percent=3.0667
+rank=9 feature=day_sin mean_abs_shap_model=0.00933276 mean_abs_shap_raw=94.64535022 share_percent=2.8440
+rank=10 feature=quarter_sin mean_abs_shap_model=0.00879263 mean_abs_shap_raw=89.16779558 share_percent=2.6794
+rank=11 feature=Infecar.temperature mean_abs_shap_model=0.00622769 mean_abs_shap_raw=63.15622217 share_percent=1.8978
+rank=12 feature=cellTemperature mean_abs_shap_model=0.00369684 mean_abs_shap_raw=37.49034923 share_percent=1.1266
+rank=13 feature=Infecar.radiation mean_abs_shap_model=0.00348174 mean_abs_shap_raw=35.30897275 share_percent=1.0610
+elapsed_summary: KAN=157.83s KAN-Mm=303.57s tabnet=173.08s tabnet-mr=312.39s
+branch_summary:
+branch	MAE_raw	R2	max_abs_err_raw	tail5_mean_abs_err_raw	violations_pct	time_s
+KAN	428.096675	0.875956	5316.923340	2558.119385	32.18%	157.83
+KAN-Mm	428.716060	0.875758	5308.711914	2561.734131	29.59%	303.57
+tabnet	450.432513	0.866373	5335.358398	2644.914551	41.67%	173.08
+tabnet-mr	479.846760	0.842114	6517.716309	2898.496338	35.29%	312.39
+
+Process finished with exit code 0
