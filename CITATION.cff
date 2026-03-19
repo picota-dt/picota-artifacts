@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "Picota Artifacts"
+type: software
+authors:
+  - family-names: "Roncal"
+    given-names: "Octavio"
+    email: "octavio.roncal@ulpgc.es"
+    orcid: "https://orcid.org/0000-0003-3503-3833"
+repository-code: "https://github.com/picota-dt/picota-artifacts"
+license: "MIT"
+abstract: "Artifact repository for the Picota case studies, including the Energigran and Europlatano runnable experiment bundles."
